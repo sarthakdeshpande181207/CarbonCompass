@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Carbon Compass Report — Carbon Compass</title>
+  <meta name="description" content="View your personalized carbon footprint analysis, Planet Health Score, and Carbon Mirror persona.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/report.css">
+</head>
+<body class="animate-fade-in">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#report-results-grid" class="skip-link">Skip to Results</a>
+
+  <!-- Shared Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Layout -->
+  <main class="report-layout">
+    <div class="container">
+      
+      <!-- Report Header -->
+      <header class="section-header" style="margin-bottom: 40px;">
+        <span class="badge badge-success">Assessment Complete</span>
+        <h1 class="section-title">Your Carbon Compass Report</h1>
+        <p class="section-description">A complete diagnostic analysis of your lifestyle emissions and reduction roadmap.</p>
+      </header>
+
+      <!-- Main Results Grid -->
+      <div class="report-grid" id="report-results-grid">
+        
+        <!-- LEFT COLUMN: Score & Score Breakdown -->
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+          
+          <!-- Planet Health Score Gauge Card -->
+          <div class="card score-card animate-slide-up">
+            <h2 class="sr-only">Planet Health Score</h2>
+            
+            <div class="gauge-wrapper">
+              <svg class="gauge-svg" viewBox="0 0 200 200" aria-hidden="true">
+                <!-- SVG Gradient Definition -->
+                <defs>
+                  <linearGradient id="gauge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--secondary)" />
+                    <stop offset="100%" stop-color="var(--primary)" />
+                  </linearGradient>
+                </defs>
+                <!-- Track Circle -->
+                <circle class="gauge-track" cx="100" cy="100" r="90"></circle>
+                <!-- Fill Circle -->
+                <circle class="gauge-fill" id="gauge-fill-el" cx="100" cy="100" r="90"></circle>
+              </svg>
+              <!-- Center Text Content -->
+              <div class="gauge-center-text">
+                <span class="gauge-score" id="gauge-score-val">0</span>
+                <span class="gauge-label">Health Score</span>
+              </div>
+            </div>
+            
+            <p class="text-muted" style="font-size: 0.95rem; max-width: 240px; margin: 0 auto;" id="gauge-score-desc">
+              Analyzing score...
+            </p>
+
+            <!-- Why My Score? Section -->
+            <div class="why-score-section">
+              <h3 class="why-score-title">Why My Score?</h3>
+              <div class="deductions-list" id="deductions-container">
+                <!-- Dynamically loaded deductions -->
+              </div>
+              
+              <!-- Strongest/Weakest summary area -->
+              <div class="summary-areas">
+                <div class="summary-row">
+                  <span class="summary-label">Strongest Category:</span>
+                  <span class="summary-value strongest" id="strongest-val">Loading...</span>
+                </div>
+                <div class="summary-row" style="margin-top: 8px;">
+                  <span class="summary-label">Weakest Category:</span>
+                  <span class="summary-value weakest" id="weakest-val">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Carbon Mirror & Footprint Breakdown -->
+        <div style="display: flex; flex-direction: column; gap: 32px;">
+          
+          <!-- Carbon Mirror Persona Archetype Card -->
+          <div class="card persona-card animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="persona-header">
+              <span class="persona-emoji" id="persona-emoji-el" aria-hidden="true">🌱</span>
+              <div class="persona-title-wrap">
+                <span class="persona-subtitle">Carbon Mirror Persona</span>
+                <h2 class="persona-name" id="persona-name-el">Loading...</h2>
+              </div>
+            </div>
+            <p class="persona-description" id="persona-desc-el">
+              Loading details...
+            </p>
+            
+            <div class="persona-recommendations">
+              <h3 class="recommendations-title">Key Recommendations</h3>
+              <ul class="recommendations-list" id="recommendations-container">
+                <!-- Dynamically loaded bullets -->
+              </ul>
+            </div>
+          </div>
+
+          <!-- Category Footprint Breakdown Chart Card -->
+          <div class="card chart-card animate-slide-up" style="animation-delay: 0.2s;">
+            <h2 class="chart-title">Weekly Carbon Footprint (kg CO₂e)</h2>
+            <div class="chart-bars" id="chart-bars-container">
+              <!-- Dynamically loaded bars -->
+            </div>
+            <p class="text-muted" style="font-size: 0.85rem; margin-top: 24px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+              *Footprint estimates are based on typical regional averages and your survey responses. Lower footprint yields a higher score.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Call to Action Buttons -->
+      <div class="report-actions animate-slide-up" style="animation-delay: 0.3s;">
+        <a href="/dashboard" class="btn btn-primary" id="cta-dashboard-btn" aria-label="Go to dashboard screen">
+          Go to Dashboard
+        </a>
+        <a href="/assessment?retake=true" class="btn btn-secondary" id="cta-retake-btn" aria-label="Retake carbon assessment quiz">
+          Re-take Assessment
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
+
+  <!-- Page Logic JS -->
+  <script type="module" src="/js/pages/report.js"></script>
+
+</body>
+</html>

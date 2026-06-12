@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette (Sleek Dark Mode HSL System) */
+  --bg-main: hsl(220, 25%, 7%);
+  --bg-card: hsl(220, 22%, 12%);
+  --bg-input: hsl(220, 20%, 16%);
+  --bg-glass: hsla(220, 22%, 12%, 0.7);
+  
+  --primary: hsl(142, 70%, 45%);
+  --primary-glow: hsla(142, 70%, 45%, 0.15);
+  --primary-hover: hsl(142, 70%, 53%);
+  --primary-dark: hsl(142, 60%, 30%);
+  
+  --secondary: hsl(200, 85%, 55%);
+  --secondary-glow: hsla(200, 85%, 55%, 0.15);
+  --secondary-hover: hsl(200, 85%, 63%);
+  
+  --accent-orange: hsl(28, 90%, 55%);
+  --accent-red: hsl(0, 85%, 60%);
+  --accent-blue: hsl(210, 90%, 50%);
+  
+  --text-main: hsl(0, 0%, 95%);
+  --text-muted: hsl(220, 10%, 70%);
+  --text-dim: hsl(220, 8%, 50%);
+  
+  --border-color: hsla(0, 0%, 100%, 0.08);
+  --border-focus: hsl(142, 70%, 45%);
+  
+  --font-display: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+  
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.40s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  --max-width: 1200px;
+}
+
+/* CSS Reset & General Base styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-body);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--text-main);
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--secondary-hover);
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Accessibility Focus Indicator */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+}
+
+/* Skip link (a11y) */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--primary);
+  color: var(--bg-main);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top var(--transition-fast);
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* Screen reader only utility (a11y) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Media Query for Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

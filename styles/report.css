@@ -1,0 +1,305 @@
+/* --- Report Page Layout --- */
+.report-layout {
+  padding: 60px 0;
+  min-height: calc(100vh - 144px);
+}
+
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 968px) {
+  .report-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Score Card & SVG Gauge --- */
+.score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.gauge-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin-bottom: 24px;
+}
+
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.gauge-track {
+  fill: none;
+  stroke: var(--bg-input);
+  stroke-width: 12;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: url(#gauge-gradient);
+  stroke-width: 12;
+  stroke-linecap: round;
+  stroke-dasharray: 565.48; /* Circumference for r=90 */
+  stroke-dashoffset: 565.48; /* Animate this offset */
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 1, 0.2, 1);
+}
+
+.gauge-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gauge-score {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-main);
+}
+
+.gauge-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* --- Why My Score Section --- */
+.why-score-section {
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  padding-top: 24px;
+  margin-top: 24px;
+  text-align: left;
+}
+
+.why-score-title {
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  color: var(--text-main);
+}
+
+.deductions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.deduction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.deduction-category {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deduction-value {
+  font-weight: 600;
+  color: var(--accent-orange);
+}
+
+.deduction-value.perfect {
+  color: var(--primary);
+}
+
+.summary-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--bg-input);
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.summary-label {
+  color: var(--text-muted);
+}
+
+.summary-value {
+  font-weight: 600;
+}
+
+.summary-value.strongest {
+  color: var(--primary);
+}
+
+.summary-value.weakest {
+  color: var(--accent-orange);
+}
+
+/* --- Carbon Mirror Archetype Card --- */
+.persona-card {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.persona-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.persona-emoji {
+  font-size: 3rem;
+}
+
+.persona-title-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.persona-subtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.persona-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.persona-description {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 1rem;
+}
+
+.persona-recommendations {
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.recommendations-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.recommendations-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recommendations-list li {
+  position: relative;
+  padding-left: 24px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.recommendations-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* --- Carbon Breakdown Chart (Horizontal Grid) --- */
+.chart-card {
+  text-align: left;
+}
+
+.chart-title {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chart-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chart-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.chart-bar-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-bar-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.chart-bar-track {
+  height: 10px;
+  background-color: var(--bg-input);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.chart-bar-fill {
+  height: 100%;
+  width: 0%; /* Animate this */
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  border-radius: var(--radius-xl);
+  transition: width 1.2s cubic-bezier(0.1, 1, 0.2, 1);
+}
+
+/* --- CTA Footer Actions --- */
+.report-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 576px) {
+  .report-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

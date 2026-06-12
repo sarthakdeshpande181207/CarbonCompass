@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Challenges Hub — Carbon Compass</title>
+  <meta name="description" content="Commit to weekly eco-challenges, log daily progress, earn XP rewards, and track your sustainability achievements on Carbon Compass.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/challenges.css">
+</head>
+<body class="animate-fade-in">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#challenges-core" class="skip-link">Skip to Challenges</a>
+
+  <!-- High-Performance Background Particles Canvas -->
+  <canvas id="bg-particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mouse Reactive Glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Shared Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Challenges Main Layout -->
+  <main class="challenges-layout">
+    
+    <!-- Neon Background Accents -->
+    <div class="glow-bg-1" aria-hidden="true"></div>
+    <div class="glow-bg-2" aria-hidden="true"></div>
+
+    <div class="container challenges-container">
+      
+      <!-- active challenge banner / hero panel -->
+      <section class="glass-panel active-showcase-panel animate-slide-up" style="animation-delay: 0.05s;" aria-label="Weekly Mission Center">
+        <div class="active-showcase-split">
+          <div class="active-showcase-content">
+            <h1 class="active-showcase-title" id="active-challenge-header-title">🌍 Weekly Mission Center</h1>
+            <p class="active-showcase-desc" id="active-challenge-header-desc">
+              Start a challenge, earn XP, unlock achievements, and reduce your carbon footprint.
+            </p>
+            
+            <!-- Motivational Welcome Center when IDLE -->
+            <div id="active-idle-view" style="display: flex; align-items: center; gap: 20px; margin-top: 20px;">
+              <div style="font-size: 3rem; animation: float-widget-1 6s ease-in-out infinite; user-select: none;" aria-hidden="true">🧭</div>
+              <div style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; max-width: 480px;">
+                Your carbon assessment highlights room for optimization. Activating a weekly challenge helps target specific behaviors to build sustainable habits. Select from the available catalog below!
+              </div>
+            </div>
+
+            <!-- Progress section when ACTIVE -->
+            <div id="active-progress-section" style="display: none; margin-top: 20px;">
+              <div class="challenge-stats" style="max-width: 480px; margin-bottom: 16px; border: none; padding: 0; background: none;">
+                <div class="stat-box">
+                  <span class="stat-label">Estimated CO₂ Savings</span>
+                  <span class="stat-value saving" id="active-challenge-saving" style="font-size: 1.1rem;">-0.0 kg</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-label">Mission Reward</span>
+                  <span class="stat-value xp" id="active-challenge-xp" style="font-size: 1.1rem;">+0 XP</span>
+                </div>
+              </div>
+              
+              <div class="progress-container" style="max-width: 480px; margin-bottom: 20px;">
+                <div class="progress-track" aria-hidden="true">
+                  <div class="progress-fill" id="active-challenge-progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="progress-labels">
+                  <span id="active-challenge-progress-label">Progress: 0 / 0 Days</span>
+                  <span id="active-challenge-progress-pct">0%</span>
+                </div>
+              </div>
+              
+              <div class="btn-group">
+                <button class="btn btn-primary" id="active-log-progress-btn">
+                  Log Day's Progress
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Quick Level & Statistics Summary -->
+          <div class="active-showcase-side">
+            <div class="active-showcase-stats-inner">
+              <h2 class="panel-title" style="font-size: 1.1rem; margin-bottom: 16px; border: none; padding: 0; display: flex; align-items: center; gap: 8px;">
+                🏆 Level & Stats
+              </h2>
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                
+                <!-- Level Badge Info -->
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                    <span class="text-muted">Rank:</span>
+                    <span class="text-main" id="user-level-badge" style="font-weight: 700; color: var(--secondary);">Lvl 1 - Eco Explorer</span>
+                  </div>
+                  <!-- Next Level Progress Track -->
+                  <div class="progress-track" style="height: 5px; margin-top: 4px;" aria-hidden="true">
+                    <div class="progress-fill" id="level-progress-fill" style="width: 0%; background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);"></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-dim);">
+                    <span id="level-progress-label">0 / 100 XP</span>
+                    <span id="level-next-xp-needed">100 XP to next rank</span>
+                  </div>
+                </div>
+
+                <hr style="border: none; border-top: 1px solid var(--border-color); margin: 4px 0;" />
+
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span class="text-muted">Total XP Earned:</span>
+                  <span class="text-main" id="stat-xp-earned" style="font-weight: 700; color: var(--secondary);">0 XP</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span class="text-muted">Total CO₂ Saved:</span>
+                  <span class="text-main" id="stat-co2-saved" style="font-weight: 700; color: var(--primary);">0.0 kg</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span class="text-muted">Missions Completed:</span>
+                  <span class="text-main" id="stat-challenges-completed" style="font-weight: 700;">0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                  <span class="text-muted">Active Habit Streak:</span>
+                  <span class="text-main" id="stat-active-days" style="font-weight: 700; color: var(--accent-orange);">0 Days</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Filter Menu -->
+      <nav class="filter-tabs animate-slide-up" style="animation-delay: 0.1s;" aria-label="Filter challenges by category">
+        <button class="tab-btn active" data-category="all">All</button>
+        <button class="tab-btn" data-category="transport">Transport</button>
+        <button class="tab-btn" data-category="energy">Energy</button>
+        <button class="tab-btn" data-category="diet">Diet</button>
+        <button class="tab-btn" data-category="shopping">Shopping & Waste</button>
+        <button class="tab-btn" data-category="community">Community</button>
+      </nav>
+
+      <!-- Available Challenges Grid Core Area -->
+      <h2 class="section-title animate-slide-up" style="animation-delay: 0.12s; margin-top: 16px; font-size: 1.3rem; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 12px;" id="available-challenges-title">
+        🌱 Available Challenges
+      </h2>
+      <section class="challenges-grid animate-slide-up" style="animation-delay: 0.15s;" id="challenges-core" aria-label="Available Eco Challenges Catalog">
+        <!-- Loader Skeletons -->
+        <div class="challenge-card shimmer">
+          <div class="skeleton-title" style="width: 50%;"></div>
+          <div class="skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton-text" style="width: 75%;"></div>
+        </div>
+        <div class="challenge-card shimmer">
+          <div class="skeleton-title" style="width: 50%;"></div>
+          <div class="skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton-text" style="width: 75%;"></div>
+        </div>
+        <div class="challenge-card shimmer">
+          <div class="skeleton-title" style="width: 50%;"></div>
+          <div class="skeleton-text" style="width: 90%;"></div>
+          <div class="skeleton-text" style="width: 75%;"></div>
+        </div>
+      </section>
+
+      <!-- Completed Challenges Grid Core Area -->
+      <h2 class="section-title animate-slide-up" style="animation-delay: 0.2s; margin-top: 48px; font-size: 1.3rem; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; display: none;" id="completed-challenges-title">
+        ✅ Completed Challenges
+      </h2>
+      <section class="challenges-grid animate-slide-up" style="animation-delay: 0.22s; display: none;" id="challenges-completed-core" aria-label="Completed Eco Challenges">
+        <!-- Completed cards rendered here dynamically -->
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Page Logic JS -->
+  <script type="module" src="/js/pages/challenges.js"></script>
+
+</body>
+</html>

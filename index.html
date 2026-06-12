@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carbon Compass — Track, Understand, & Reduce Your Carbon Footprint</title>
+  <meta name="description"
+    content="Discover your personalized Planet Health Score, unlock weekly eco challenges, and get guided sustainability coaching with Carbon Compass.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/landing.css">
+</head>
+
+<body class="animate-fade-in" style="visibility: visible;">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to Main Content</a>
+
+  <!-- Shared Dynamic Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Wrapper -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Welcome banner">
+      <div class="container hero-grid">
+
+        <!-- Hero Text Content -->
+        <div class="hero-content animate-slide-up">
+          <div class="hero-tagline">Navigate Your Carbon Footprint</div>
+          <h1 class="hero-title">Chart your path to a <span>healthier planet</span>.</h1>
+          <p class="hero-description">
+            Discover your environmental impact with our 13-question assessment, unlock gamified weekly eco-challenges,
+            and chat with Sage, your AI-powered sustainability coach.
+          </p>
+          <div class="hero-actions">
+            <button id="google-signin-btn" class="btn btn-primary" aria-label="Sign in with Google to get started">
+              <!-- Google G Logo Icon -->
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"
+                style="background: white; border-radius: 50%; padding: 2px;">
+                <path d="M19.6 10.2c0-.7-.1-1.4-.2-2H10v3.8h5.4c-.2 1.2-.9 2.2-2 2.9v2.4h3.2c1.9-1.7 3-4.3 3-7.1z"
+                  fill="#4285F4" />
+                <path
+                  d="M10 20c2.7 0 5-1 6.6-2.6l-3.2-2.4c-.9.6-2 .9-3.4.9-2.6 0-4.8-1.7-5.6-4.1H1.1v2.5C2.8 17.6 6.1 20 10 20z"
+                  fill="#34A853" />
+                <path d="M4.4 11.8c-.2-.6-.3-1.2-.3-1.8s.1-1.2.3-1.8V5.7H1.1C.4 7 .0 8.5.0 10s.4 3 1.1 4.3l3.3-2.5z"
+                  fill="#FBBC05" />
+                <path
+                  d="M10 4c1.5 0 2.8.5 3.8 1.4l2.9-2.9C15 1 12.7 0 10 0 6.1 0 2.8 2.4 1.1 5.7l3.3 2.5c.8-2.4 3-4.2 5.6-4.2z"
+                  fill="#EA4335" />
+              </svg>
+              <span>Get Started with Google</span>
+              <span id="login-loader" class="sr-only" style="display: none;">Loading...</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Orbital Graphic Visual -->
+        <div class="hero-visual animate-float" aria-hidden="true">
+          <div class="globe-container">
+            <div class="globe-glow"></div>
+            <div class="globe-outer-ring"></div>
+            <div class="globe-inner-ring"></div>
+            <div class="globe-core"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Value Propositions Features Section -->
+    <section class="section features-section" aria-label="App Features">
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-title">Why Carbon Compass?</h2>
+          <p class="section-description">A structured, interactive framework to help you build green habits that stick.
+          </p>
+        </div>
+
+        <div class="features-grid">
+
+          <!-- Card 1 -->
+          <div class="card card-primary feature-card animate-slide-up">
+            <div class="feature-icon-wrapper" aria-hidden="true">📊</div>
+            <h3 class="feature-title">Planet Health Score</h3>
+            <p class="feature-text">Complete a quick 13-question assessment to measure your daily carbon impact on a
+              0–100 scale.</p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card card-primary feature-card animate-slide-up" style="animation-delay: 0.1s;">
+            <div class="feature-icon-wrapper" aria-hidden="true">🤖</div>
+            <h3 class="feature-title">AI Sustainability Coach</h3>
+            <p class="feature-text">Chat directly with "Sage", our Gemini-powered sustainability advisor, for
+              personalized ecological advice.</p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card card-primary feature-card animate-slide-up" style="animation-delay: 0.2s;">
+            <div class="feature-icon-wrapper" aria-hidden="true">🎮</div>
+            <h3 class="feature-title">Gamified Eco-Challenges</h3>
+            <p class="feature-text">Unlock achievements, earn badges, and build streaks by completing active weekly eco
+              challenges.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer"
+    style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
+
+  <!-- Page Logic Script -->
+  <script type="module" src="/js/pages/landing.js"></script>
+
+</body>
+
+</html>

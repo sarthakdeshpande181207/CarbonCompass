@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assessment — Carbon Compass</title>
+  <meta name="description" content="Calculate your carbon footprint score by completing our quick, 13-question lifestyle quiz.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/assessment.css">
+</head>
+<body class="animate-fade-in">
+
+  <!-- Skip Link for Keyboard Users -->
+  <a href="#assessment-card-container" class="skip-link">Skip to Question</a>
+
+  <!-- Shared Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Wrapper -->
+  <main class="assessment-layout">
+    <div class="container">
+      <div class="assessment-container">
+        
+        <!-- Progress Bar Indicator -->
+        <div class="progress-wrapper">
+          <div class="progress-header">
+            <span id="category-badge" class="progress-category">Transport</span>
+            <span id="question-progress-text">Question 1 of 13</span>
+          </div>
+          <div class="progress-bar-track" aria-hidden="true">
+            <div id="progress-bar-fill" class="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="card question-card" id="assessment-card-container">
+          <!-- Dynamically Injected Question Content -->
+          <div id="question-content" class="question-slide-in">
+            <div class="question-header">
+              <span class="badge badge-info" id="category-pill">TRANSPORT</span>
+              <h2 class="question-text" id="question-text-el">Loading question...</h2>
+            </div>
+            
+            <form id="options-form" aria-label="Question options">
+              <div class="options-list" id="options-container" role="radiogroup" aria-labelledby="question-text-el">
+                <!-- Dynamically injected options -->
+              </div>
+            </form>
+          </div>
+
+          <!-- Action Buttons Navigation -->
+          <div class="assessment-actions">
+            <button id="prev-btn" class="btn btn-secondary" disabled aria-label="Go to previous question">
+              <span>&larr;</span> Back
+            </button>
+            <button id="next-btn" class="btn btn-primary" aria-label="Go to next question">
+              Next <span>&rarr;</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
+
+  <!-- Page Logic JS -->
+  <script type="module" src="/js/pages/assessment.js"></script>
+
+</body>
+</html>
