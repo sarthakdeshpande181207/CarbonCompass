@@ -215,41 +215,7 @@
   }
 }
 
-/* --- Glassmorphic Card Panel --- */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.4),
-    inset 0 1px 1px rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-}
 
-/* Neon Edge Highlight Hover Effect */
-.glass-panel:hover {
-  border-color: rgba(74, 222, 128, 0.25);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 25px rgba(74, 222, 128, 0.12),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
-}
-
-.panel-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 14px;
-}
 
 /* --- Floating Widget Animations --- */
 @keyframes float-widget-1 {

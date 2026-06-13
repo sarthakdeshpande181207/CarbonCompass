@@ -70,11 +70,9 @@ export const updateUserProfile = async (uid, updates) => {
 
 export const getAssessment = async (uid) => {
   const isFbConf = isFirebaseConfigured();
-  console.log(`Firestore: getAssessment called for uid = ${uid}, isFirebaseConfigured = ${isFbConf}`);
   if (!isFbConf) {
     const raw = localStorage.getItem(`${SB_DB_ASSESSMENT}${uid}`);
     const parsed = raw ? JSON.parse(raw) : null;
-    console.log(`Firestore: getAssessment (localStorage) returned:`, parsed);
     return parsed;
   }
 
@@ -82,7 +80,6 @@ export const getAssessment = async (uid) => {
     const docRef = doc(db, 'users', uid, 'assessment', 'results');
     const snap = await getDoc(docRef);
     const data = snap.exists() ? snap.data() : null;
-    console.log(`Firestore: getAssessment (Firestore) returned exists = ${snap.exists()}, data:`, data);
     return data;
   } catch (error) {
     console.error("Firestore: Error getting assessment results", error);

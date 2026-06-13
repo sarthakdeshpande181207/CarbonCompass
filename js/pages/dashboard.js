@@ -5,6 +5,7 @@ import { initNavbar } from '../components/navbar.js';
 import { showToast } from '../components/toast.js';
 import { initRouter } from '../utils/router.js';
 import { BADGE_DEFS } from '../utils/constants.js';
+import { initScrollReveal } from '../utils/helpers.js';
 
 // Curated Climate-Tech & Sustainability Quotes
 const SUSTAINABILITY_QUOTES = [
@@ -100,9 +101,6 @@ function triggerBurstAtScoreRing() {
 function renderScore(assessment) {
   const score = assessment.planetHealthScore || 0;
   const persona = assessment.persona || { emoji: '🌱', name: 'Eco Explorer' };
-
-  console.log("Dashboard: score value =", score);
-  console.log("Dashboard: archetype value =", persona.name);
 
   // Animate score counter
   animateValue(heroScoreVal, 0, score, 1200);
@@ -409,20 +407,17 @@ function renderActiveChallenge(challenges) {
 async function loadDashboardData(uid) {
   console.log("Dashboard: loadDashboardData called for uid =", uid);
   const [assessment, challenges, badges, streaks, profile] = await Promise.all([
-    getAssessment(uid).catch(e => { console.error("Error loading assessment:", e); return null; }),
-    getChallenges(uid).catch(e => { console.error("Error loading challenges:", e); return []; }),
-    getBadges(uid).catch(e => { console.error("Error loading badges:", e); return []; }),
-    getStreaks(uid).catch(e => { console.error("Error loading streaks:", e); return { current: 0, longest: 0, lastActivityDate: null }; }),
-    getUserProfile(uid).catch(e => { console.error("Error loading user profile:", e); return null; })
+    getAssessment(uid),
+    getChallenges(uid),
+    getBadges(uid),
+    getStreaks(uid),
+    getUserProfile(uid)
   ]);
 
   if (uid !== currentLoadedUid) {
     console.warn("Dashboard: Stale data load discarded for uid =", uid);
     return;
   }
-
-  console.log("Dashboard: assessment data received:", assessment);
-  console.log("Dashboard: dashboard render started");
 
   // 1. Render Score Ring
   if (assessment) {
@@ -449,7 +444,7 @@ async function loadDashboardData(uid) {
   // 5. Render Footer Statistics & Trend Badges
   renderAnalyticsAndStats(challenges, badges, assessment, profile);
 
-  console.log("Dashboard: dashboard render completed");
+  initScrollReveal();
 }
 
 // Select Quote of the Day based on day of year
@@ -640,6 +635,30 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
       console.error("Dashboard: Error loading metrics:", e);
       showToast("Error updating dashboard parameters.", "error");
+
+      const welcomeHero = document.querySelector('.welcome-hero-panel');
+      const dashboardCore = document.getElementById('dashboard-core');
+
+      if (welcomeHero) welcomeHero.style.display = 'none';
+      if (dashboardCore) dashboardCore.style.display = 'none';
+
+      const container = document.querySelector('.dashboard-container');
+      if (container) {
+        const oldAlert = container.querySelector('.alert-card');
+        if (oldAlert) oldAlert.remove();
+
+        const alertCard = document.createElement('div');
+        alertCard.className = 'alert-card animate-slide-up';
+        alertCard.innerHTML = `
+          <div class="alert-icon" aria-hidden="true">⚠️</div>
+          <h2 class="alert-title">Failed to load Dashboard</h2>
+          <p class="alert-desc">We couldn't retrieve your dashboard analytics. Please check your network connection and try again.</p>
+          <button class="btn btn-secondary retry-btn">Retry</button>
+        `;
+        alertCard.querySelector('.retry-btn').addEventListener('click', () => window.location.reload());
+        container.appendChild(alertCard);
+      }
+      document.body.style.visibility = 'visible';
     }
   });
 });

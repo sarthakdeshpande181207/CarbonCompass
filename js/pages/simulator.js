@@ -7,6 +7,7 @@ import { initNavbar } from '../components/navbar.js';
 import { showToast } from '../components/toast.js';
 import { initRouter } from '../utils/router.js';
 import { DEFAULT_CHALLENGES } from '../utils/constants.js';
+import { initScrollReveal } from '../utils/helpers.js';
 
 // Category mapping helper
 const CATEGORY_MAP = {
@@ -671,6 +672,10 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       // 1. Fetch user's assessment
       const assessment = await getAssessment(user.uid);
+      
+      const pageLoader = document.getElementById('simulator-page-loader');
+      if (pageLoader) pageLoader.style.display = 'none';
+
       if (!assessment || assessment.planetHealthScore === undefined) {
         // No assessment completed -> show onboarding empty state
         onboardingPanel.style.display = 'flex';
@@ -712,11 +717,35 @@ document.addEventListener('DOMContentLoaded', () => {
       calculateSimulation();
 
       // Make page body visible
+      initScrollReveal();
       document.body.style.visibility = 'visible';
 
     } catch (e) {
       console.error("Simulator: Error initializing page parameters:", e);
       showToast("Error loading page details.", "error");
+
+      const pageLoader = document.getElementById('simulator-page-loader');
+      if (pageLoader) pageLoader.style.display = 'none';
+      if (onboardingPanel) onboardingPanel.style.display = 'none';
+      if (activeLayout) activeLayout.style.display = 'none';
+
+      const container = document.querySelector('.simulator-container');
+      if (container) {
+        const oldAlert = container.querySelector('.alert-card');
+        if (oldAlert) oldAlert.remove();
+
+        const alertCard = document.createElement('div');
+        alertCard.className = 'alert-card animate-slide-up';
+        alertCard.innerHTML = `
+          <div class="alert-icon" aria-hidden="true">⚠️</div>
+          <h2 class="alert-title">Failed to load Simulator</h2>
+          <p class="alert-desc">We couldn't retrieve the simulator parameters. Please check your network connection and try again.</p>
+          <button class="btn btn-secondary retry-btn">Retry</button>
+        `;
+        alertCard.querySelector('.retry-btn').addEventListener('click', () => window.location.reload());
+        container.appendChild(alertCard);
+      }
+
       document.body.style.visibility = 'visible';
     }
   });

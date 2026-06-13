@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 
-<body class="animate-fade-in">
+<body class="animate-fade-in" style="visibility: hidden;">
 
   <!-- Keyboard Accessibility Skip Link -->
   <a href="#dashboard-core" class="skip-link">Skip to Dashboard</a>
@@ -70,7 +70,7 @@
         <div style="display: flex; flex-direction: column; gap: 40px;">
 
           <!-- Hero Score Overview Panel (float-1) -->
-          <section class="glass-panel hero-overview float-1 animate-slide-up" style="animation-delay: 0.05s;"
+          <section class="glass-panel hero-overview float-1 animate-slide-up stagger-1"
             aria-label="Carbon Compass Score Overview">
             <h2 class="panel-title" style="width: 100%;"><span aria-hidden="true">🧭</span> Planet Health</h2>
 
@@ -102,7 +102,7 @@
           </section>
 
           <!-- Weekly Progress & Streak Panel (float-2) -->
-          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.1s;"
+          <section class="glass-panel float-2 animate-slide-up stagger-2"
             aria-label="Streak and Weekly Activity Tracker">
             <h2 class="panel-title"><span aria-hidden="true">🔥</span> Streak & Progress</h2>
 
@@ -160,7 +160,7 @@
         <div style="display: flex; flex-direction: column; gap: 40px;">
 
           <!-- Challenge Center Panel (float-2) -->
-          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.15s;"
+          <section class="glass-panel float-2 animate-slide-up stagger-3"
             aria-label="Active Weekly Eco Challenge">
             <h2 class="panel-title"><span aria-hidden="true">🏆</span> Active Challenge</h2>
 
@@ -175,7 +175,7 @@
           </section>
 
           <!-- Achievement Showcase Panel (float-1) -->
-          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.2s;"
+          <section class="glass-panel float-1 animate-slide-up stagger-4"
             aria-label="Badge Achievements Gallery">
             <h2 class="panel-title"><span aria-hidden="true">💎</span> Achievements</h2>
             <div class="badge-collection" id="badge-collection-grid">
@@ -189,7 +189,7 @@
           </section>
 
           <!-- Carbon Trend Analytics Card (float-1) -->
-          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.25s;"
+          <section class="glass-panel float-1 animate-slide-up stagger-5"
             aria-label="Emission footprint trend analytics">
             <div class="trend-card-header">
               <h2 class="panel-title" style="margin: 0; border: none; padding: 0;"><span aria-hidden="true">📈</span>
@@ -219,7 +219,7 @@
       </div>
 
       <!-- Quick Action Hub -->
-      <section class="action-hub-section animate-slide-up" style="animation-delay: 0.3s;"
+      <section class="action-hub-section reveal-on-scroll"
         aria-label="Quick Navigation Links">
         <h2 class="panel-title" style="border: none; margin: 0;"><span aria-hidden="true">⚡</span> Action Hub</h2>
 
@@ -265,7 +265,7 @@
       </section>
 
       <!-- Footer Statistics Bar -->
-      <section class="footer-stats-bar animate-slide-up" style="animation-delay: 0.35s;"
+      <section class="footer-stats-bar reveal-on-scroll"
         aria-label="Carbon Compass Global Profile Stats">
         <div class="stat-item">
           <span class="stat-val" id="stat-challenges-completed">0</span>
@@ -285,8 +285,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer"
-    style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+  <footer class="footer">
     <div class="container">
       <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
     </div>

@@ -4,7 +4,7 @@ import { activateChallenge, logChallengeProgress } from '../services/challengeSe
 import { initNavbar } from '../components/navbar.js';
 import { showToast } from '../components/toast.js';
 import { initRouter } from '../utils/router.js';
-import { calculateLevel, formatDate } from '../utils/helpers.js';
+import { calculateLevel, formatDate, initScrollReveal } from '../utils/helpers.js';
 
 // Module-level state variables
 let currentUser = null;
@@ -403,13 +403,11 @@ function renderGrids(challenges) {
 
 // Load challenges page statistics and render all segments
 async function loadChallengesData(uid) {
-  console.log("Challenges: Loading data for uid =", uid);
-  
   const [profile, assessment, challenges, streaks] = await Promise.all([
-    getUserProfile(uid).catch(e => { console.error("Error loading profile:", e); return null; }),
-    getAssessment(uid).catch(e => { console.error("Error loading assessment:", e); return null; }),
-    getChallenges(uid).catch(e => { console.error("Error loading challenges:", e); return []; }),
-    getStreaks(uid).catch(e => { console.error("Error loading streaks:", e); return { current: 0 }; })
+    getUserProfile(uid),
+    getAssessment(uid),
+    getChallenges(uid),
+    getStreaks(uid)
   ]);
 
   if (uid !== currentLoadedUid) {
@@ -464,6 +462,9 @@ async function loadChallengesData(uid) {
 
   // 4. Render Available and Completed Grid lists
   renderGrids(challenges);
+
+  // Trigger scroll reveal
+  initScrollReveal();
 }
 
 // Create floating popup text popup celebration
@@ -682,6 +683,39 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
       console.error("Challenges: Error loading parameters:", e);
       showToast("Error updating challenges list.", "error");
+
+      const showcase = document.querySelector('.active-showcase-panel');
+      const tabs = document.querySelector('.filter-tabs');
+      const availTitle = document.getElementById('available-challenges-title');
+      const core = document.getElementById('challenges-core');
+      const compTitle = document.getElementById('completed-challenges-title');
+      const compCore = document.getElementById('challenges-completed-core');
+
+      if (showcase) showcase.style.display = 'none';
+      if (tabs) tabs.style.display = 'none';
+      if (availTitle) availTitle.style.display = 'none';
+      if (core) core.style.display = 'none';
+      if (compTitle) compTitle.style.display = 'none';
+      if (compCore) compCore.style.display = 'none';
+
+      const container = document.querySelector('.challenges-container');
+      if (container) {
+        const oldAlert = container.querySelector('.alert-card');
+        if (oldAlert) oldAlert.remove();
+
+        const alertCard = document.createElement('div');
+        alertCard.className = 'alert-card animate-slide-up';
+        alertCard.innerHTML = `
+          <div class="alert-icon" aria-hidden="true">⚠️</div>
+          <h2 class="alert-title">Failed to load Challenges</h2>
+          <p class="alert-desc">We couldn't retrieve your challenge options from the database. Please check your network connection and try again.</p>
+          <button class="btn btn-secondary retry-btn">Retry</button>
+        `;
+        alertCard.querySelector('.retry-btn').addEventListener('click', () => window.location.reload());
+        container.appendChild(alertCard);
+      }
+
+      document.body.style.visibility = 'visible';
     }
   });
 });

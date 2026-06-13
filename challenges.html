@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="/styles/animations.css">
   <link rel="stylesheet" href="/styles/challenges.css">
 </head>
-<body class="animate-fade-in">
+<body class="animate-fade-in" style="visibility: hidden;">
 
   <!-- Keyboard Accessibility Skip Link -->
   <a href="#challenges-core" class="skip-link">Skip to Challenges</a>
@@ -136,7 +136,7 @@
       </section>
 
       <!-- Category Filter Menu -->
-      <nav class="filter-tabs animate-slide-up" style="animation-delay: 0.1s;" aria-label="Filter challenges by category">
+      <nav class="filter-tabs animate-slide-up stagger-2" aria-label="Filter challenges by category">
         <button class="tab-btn active" data-category="all">All</button>
         <button class="tab-btn" data-category="transport">Transport</button>
         <button class="tab-btn" data-category="energy">Energy</button>
@@ -146,10 +146,10 @@
       </nav>
 
       <!-- Available Challenges Grid Core Area -->
-      <h2 class="section-title animate-slide-up" style="animation-delay: 0.12s; margin-top: 16px; font-size: 1.3rem; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 12px;" id="available-challenges-title">
+      <h2 class="panel-title animate-slide-up stagger-3" style="margin-top: 24px;" id="available-challenges-title">
         🌱 Available Challenges
       </h2>
-      <section class="challenges-grid animate-slide-up" style="animation-delay: 0.15s;" id="challenges-core" aria-label="Available Eco Challenges Catalog">
+      <section class="challenges-grid animate-slide-up stagger-4" id="challenges-core" aria-label="Available Eco Challenges Catalog">
         <!-- Loader Skeletons -->
         <div class="challenge-card shimmer">
           <div class="skeleton-title" style="width: 50%;"></div>
@@ -169,15 +169,22 @@
       </section>
 
       <!-- Completed Challenges Grid Core Area -->
-      <h2 class="section-title animate-slide-up" style="animation-delay: 0.2s; margin-top: 48px; font-size: 1.3rem; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; display: none;" id="completed-challenges-title">
+      <h2 class="panel-title reveal-on-scroll" style="margin-top: 48px; display: none;" id="completed-challenges-title">
         ✅ Completed Challenges
       </h2>
-      <section class="challenges-grid animate-slide-up" style="animation-delay: 0.22s; display: none;" id="challenges-completed-core" aria-label="Completed Eco Challenges">
+      <section class="challenges-grid reveal-on-scroll" style="display: none;" id="challenges-completed-core" aria-label="Completed Eco Challenges">
         <!-- Completed cards rendered here dynamically -->
       </section>
 
     </div>
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
 
   <!-- Page Logic JS -->
   <script type="module" src="/js/pages/challenges.js"></script>

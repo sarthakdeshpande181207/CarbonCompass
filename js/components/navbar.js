@@ -16,6 +16,11 @@ export const initNavbar = (activePage = '') => {
           <span style="font-size: 1.8rem; line-height: 1;">🧭</span>
           <span>Carbon Compass</span>
         </a>
+        <button class="nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-label="Toggle navigation menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
         <ul class="nav-links" id="nav-links-list">
           <!-- Dynamically populated -->
         </ul>
@@ -24,10 +29,28 @@ export const initNavbar = (activePage = '') => {
   `;
 
   const navLinksList = document.getElementById('nav-links-list');
+  const toggleBtn = document.getElementById('nav-toggle-btn');
+
+  // Toggle mobile drawer
+  if (toggleBtn && navLinksList) {
+    toggleBtn.addEventListener('click', () => {
+      const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', !expanded);
+      toggleBtn.classList.toggle('open');
+      navLinksList.classList.toggle('open');
+    });
+  }
 
   // Monitor auth state to dynamically show links and profile info
   observeAuthState((user) => {
     if (!navLinksList) return;
+
+    // Close mobile menu on auth changes or navigation
+    if (toggleBtn && navLinksList.classList.contains('open')) {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.classList.remove('open');
+      navLinksList.classList.remove('open');
+    }
 
     if (!user) {
       // Unauthenticated
@@ -57,7 +80,7 @@ export const initNavbar = (activePage = '') => {
         <li><a href="/simulator" class="nav-link ${activePage === 'simulator' ? 'active' : ''}">Simulator</a></li>
         <li><a href="/challenges" class="nav-link ${activePage === 'challenges' ? 'active' : ''}">Challenges</a></li>
         <li>
-          <a href="/profile" class="avatar-ring" title="Profile" id="nav-avatar-link" style="border: 2px solid ${activePage === 'profile' ? 'var(--primary)' : 'transparent'}">
+          <a href="/profile" class="avatar-ring ${activePage === 'profile' ? 'active' : ''}" title="Profile" id="nav-avatar-link">
             <img src="${user.photoURL || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}" alt="${user.displayName || 'User'}">
           </a>
         </li>

@@ -39,6 +39,12 @@
 
     <div class="container profile-container">
       
+      <!-- Premium Page Loader -->
+      <div id="profile-page-loader" class="page-loader">
+        <div class="spinner"></div>
+        <p class="loader-text">Loading Profile...</p>
+      </div>
+      
       <!-- ONBOARDING EMPTY STATE: Layered absolute card overlay -->
       <section id="onboarding-panel" class="glass-panel onboarding-card animate-slide-up" style="display: none;" aria-label="Assessment onboarding check">
         <div class="onboarding-icon" aria-hidden="true">🔒</div>
@@ -78,7 +84,7 @@
       <div id="active-profile-layout" style="display: none;">
         
         <!-- Hero Card Block -->
-        <header class="glass-panel profile-hero-card animate-slide-up" style="animation-delay: 0.02s;">
+        <header class="glass-panel profile-hero-card animate-slide-up">
           <!-- Localized Floating Particles -->
           <div class="hero-floating-particles" aria-hidden="true">
             <span class="particle p1"></span>
@@ -173,7 +179,7 @@
           <div class="profile-sidebar-stack">
             
             <!-- Sustainability Identity Card -->
-            <section class="glass-panel identity-card animate-slide-up" style="animation-delay: 0.05s;" aria-label="Sustainability Identity">
+            <section class="glass-panel identity-card animate-slide-up stagger-1" aria-label="Sustainability Identity">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🌱</span> Sustainability Identity</h2>
               
               <div class="identity-stats-list">
@@ -203,7 +209,7 @@
             </section>
 
             <!-- Streak Statistics Card -->
-            <section class="glass-panel stats-card animate-slide-up" style="animation-delay: 0.1s;" aria-label="Streak and Challenges Statistics">
+            <section class="glass-panel stats-card animate-slide-up stagger-2" aria-label="Streak and Challenges Statistics">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔥</span> Streak & Challenge Stats</h2>
               
               <div class="stats-counter-grid">
@@ -238,7 +244,7 @@
             </section>
 
             <!-- Sustainability Legacy Card -->
-            <section class="glass-panel legacy-card animate-slide-up" style="animation-delay: 0.12s;" aria-label="Sustainability Legacy">
+            <section class="glass-panel legacy-card reveal-on-scroll" aria-label="Sustainability Legacy">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🌳</span> Sustainability Legacy</h2>
               
               <div class="legacy-stats-grid">
@@ -312,7 +318,7 @@
           <div class="profile-analytics-stack">
             
             <!-- Achievements Showcase Card -->
-            <section class="glass-panel achievements-showcase-card animate-slide-up" style="animation-delay: 0.08s;" aria-label="Badge Achievements Gallery">
+            <section class="glass-panel achievements-showcase-card reveal-on-scroll" aria-label="Badge Achievements Gallery">
               <h2 class="panel-subtitle-glow" style="margin-bottom: 14px;"><span aria-hidden="true">💎</span> Achievements Showcase</h2>
               
               <!-- Achievement Statistics Summary -->
@@ -338,7 +344,7 @@
             </section>
 
             <!-- Current Goals Card -->
-            <section class="glass-panel goals-card animate-slide-up" style="animation-delay: 0.14s;" aria-label="Current Goals Progression">
+            <section class="glass-panel goals-card reveal-on-scroll" aria-label="Current Goals Progression">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🎯</span> Current Goals</h2>
               
               <div class="goals-list">
@@ -378,7 +384,7 @@
             </section>
 
             <!-- Sustainability Journey Timeline -->
-            <section class="glass-panel journey-timeline-card animate-slide-up" style="animation-delay: 0.16s;" aria-label="Sustainability Journey Timeline">
+            <section class="glass-panel journey-timeline-card reveal-on-scroll" aria-label="Sustainability Journey Timeline">
               <h2 class="panel-subtitle-glow" style="margin-bottom: 24px;"><span aria-hidden="true">📅</span> Sustainability Journey</h2>
               
               <div class="vertical-timeline" id="journey-timeline-container">
@@ -431,6 +437,13 @@
       </div>
     </div>
   </dialog>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
 
   <!-- JS Scripts -->
   <script type="module" src="/js/pages/profile.js"></script>

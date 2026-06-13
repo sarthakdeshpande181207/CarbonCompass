@@ -4,6 +4,7 @@ import { initNavbar } from '../components/navbar.js';
 import { showToast } from '../components/toast.js';
 import { initRouter } from '../utils/router.js';
 import { BADGE_DEFS } from '../utils/constants.js';
+import { initScrollReveal } from '../utils/helpers.js';
 
 // Rarity ordering for achievement summary
 const RARITY_SCORES = {
@@ -779,6 +780,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (!assessment || assessment.planetHealthScore === undefined) {
         // No assessment completed -> show locked preview backdrop & onboarding panel
+        const pageLoader = document.getElementById('profile-page-loader');
+        if (pageLoader) pageLoader.style.display = 'none';
         onboardingPanel.style.display = 'flex';
         lockedPreview.style.display = 'block';
         activeLayout.style.display = 'none';
@@ -787,6 +790,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Hide onboarding card overlay, show active layout
+      const pageLoader = document.getElementById('profile-page-loader');
+      if (pageLoader) pageLoader.style.display = 'none';
       onboardingPanel.style.display = 'none';
       lockedPreview.style.display = 'none';
       activeLayout.style.display = 'block';
@@ -823,11 +828,36 @@ document.addEventListener('DOMContentLoaded', () => {
       renderJourneyTimeline(assessment, challenges, earnedBadges, simulationLog);
 
       // Show page body
+      initScrollReveal();
       document.body.style.visibility = 'visible';
 
     } catch (err) {
       console.error("Profile: Error initializing page parameters:", err);
       showToast("Error loading profile details.", "error");
+
+      const pageLoader = document.getElementById('profile-page-loader');
+      if (pageLoader) pageLoader.style.display = 'none';
+      if (onboardingPanel) onboardingPanel.style.display = 'none';
+      if (lockedPreview) lockedPreview.style.display = 'none';
+      if (activeLayout) activeLayout.style.display = 'none';
+
+      const container = document.querySelector('.profile-container');
+      if (container) {
+        const oldAlert = container.querySelector('.alert-card');
+        if (oldAlert) oldAlert.remove();
+
+        const alertCard = document.createElement('div');
+        alertCard.className = 'alert-card animate-slide-up';
+        alertCard.innerHTML = `
+          <div class="alert-icon" aria-hidden="true">⚠️</div>
+          <h2 class="alert-title">Failed to load Profile</h2>
+          <p class="alert-desc">We couldn't retrieve your profile data. Please check your network connection and try again.</p>
+          <button class="btn btn-secondary retry-btn">Retry</button>
+        `;
+        alertCard.querySelector('.retry-btn').addEventListener('click', () => window.location.reload());
+        container.appendChild(alertCard);
+      }
+
       document.body.style.visibility = 'visible';
     }
   });

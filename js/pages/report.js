@@ -45,11 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const uid = user.uid;
     currentLoadedUid = uid;
-    console.log("Report: observeAuthState user.uid =", uid);
 
     try {
       const assessment = await getAssessment(uid);
-      console.log("Report: Assessment retrieved:", assessment);
 
       if (uid !== currentLoadedUid) {
         console.warn("Report: Stale data load discarded for uid =", uid);

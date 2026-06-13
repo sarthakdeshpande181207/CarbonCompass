@@ -39,6 +39,12 @@
 
     <div class="container simulator-container">
       
+      <!-- Premium Page Loader -->
+      <div id="simulator-page-loader" class="page-loader">
+        <div class="spinner"></div>
+        <p class="loader-text">Loading Simulator...</p>
+      </div>
+      
       <!-- ONBOARDING EMPTY STATE PANEL (Shown if no assessment completed) -->
       <section id="onboarding-panel" class="glass-panel onboarding-card animate-slide-up" style="display: none;" aria-label="Assessment onboarding check">
         <div class="onboarding-icon" aria-hidden="true">🔮</div>
@@ -80,7 +86,7 @@
           <div class="simulator-controls-stack">
             
             <!-- Recommended Scenario Presets Card -->
-            <section class="glass-panel presets-card animate-slide-up" style="animation-delay: 0.05s;" aria-label="Scenario presets selection">
+            <section class="glass-panel presets-card animate-slide-up stagger-1" aria-label="Scenario presets selection">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">⚡</span> Recommended Scenarios</h2>
               <p class="preset-description">Choose a preset strategy to instantly configure the sliders to optimized carbon habits:</p>
               <div class="presets-row">
@@ -100,7 +106,7 @@
             </section>
 
             <!-- Sliders Input Panel -->
-            <section class="glass-panel sliders-panel animate-slide-up" style="animation-delay: 0.1s;" aria-label="Lifestyle sliders">
+            <section class="glass-panel sliders-panel animate-slide-up stagger-2" aria-label="Lifestyle sliders">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔧</span> Fine-Tune Lifestyle Habits</h2>
               
               <div class="sliders-list">
@@ -188,7 +194,7 @@
           <div class="simulator-analytics-stack">
             
             <!-- Circular Projection Gauge -->
-            <section class="glass-panel score-gauge-card animate-slide-up" style="animation-delay: 0.08s;" aria-label="Projected score visualization">
+            <section class="glass-panel score-gauge-card animate-slide-up stagger-3" aria-label="Projected score visualization">
               <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔮</span> Projected Impact</h2>
               
               <div class="projection-gauge-container">
@@ -216,7 +222,7 @@
             </section>
 
             <!-- Real-Time Carbon Breakdown Comparison -->
-            <section class="glass-panel comparison-chart-card animate-slide-up" style="animation-delay: 0.12s;" aria-label="Category emissions comparison">
+            <section class="glass-panel comparison-chart-card animate-slide-up stagger-4" aria-label="Category emissions comparison">
               <h2 class="panel-subtitle-glow" style="margin-bottom: 16px;"><span aria-hidden="true">📊</span> Category Emissions Comparison</h2>
               
               <div class="comparison-bars-container">
@@ -314,7 +320,7 @@
             </section>
 
             <!-- Recommended Next Mission -->
-            <section class="glass-panel recommended-mission-card animate-slide-up" style="animation-delay: 0.18s;" aria-label="Suggested Eco Challenge">
+            <section class="glass-panel recommended-mission-card reveal-on-scroll" aria-label="Suggested Eco Challenge">
               <h2 class="panel-subtitle-glow" style="margin-bottom: 12px;"><span aria-hidden="true">🎯</span> Recommended Next Mission</h2>
               <div id="recommended-challenge-container">
                 <!-- Will be dynamically generated matching the biggest improvement category -->
@@ -333,7 +339,7 @@
         </div>
 
         <!-- Centered Action Pledge Commit card -->
-        <div class="commit-section-wrapper animate-slide-up" style="animation-delay: 0.22s;">
+        <div class="commit-section-wrapper reveal-on-scroll">
           <section class="glass-panel action-commit-card" aria-label="Commit Pledges and Action History">
             <h2 class="panel-subtitle-glow" style="margin-bottom: 14px; justify-content: center;"><span aria-hidden="true">📝</span> Commit to Your Green Future</h2>
             
@@ -368,6 +374,13 @@
     </div>
 
   </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
+    </div>
+  </footer>
 
   <!-- JS Scripts -->
   <script type="module" src="/js/pages/simulator.js"></script>
