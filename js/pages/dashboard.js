@@ -52,7 +52,7 @@ let statBadgesEarned = null;
 function animateValue(element, start, end, duration, decimals = 0, suffix = '') {
   if (!element) return;
   let startTimestamp = null;
-  
+
   function step(timestamp) {
     if (!startTimestamp) startTimestamp = timestamp;
     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
@@ -65,7 +65,7 @@ function animateValue(element, start, end, duration, decimals = 0, suffix = '') 
       element.textContent = end.toFixed(decimals) + suffix;
     }
   }
-  
+
   window.requestAnimationFrame(step);
 }
 
@@ -83,7 +83,7 @@ function triggerBurstAtScoreRing() {
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 4 + 1.5;
     const isCyan = Math.random() > 0.5;
-    
+
     burstParticles.push({
       x: centerX + window.scrollX,
       y: centerY + window.scrollY,
@@ -100,10 +100,10 @@ function triggerBurstAtScoreRing() {
 function renderScore(assessment) {
   const score = assessment.planetHealthScore || 0;
   const persona = assessment.persona || { emoji: '🌱', name: 'Eco Explorer' };
-  
+
   console.log("Dashboard: score value =", score);
   console.log("Dashboard: archetype value =", persona.name);
-  
+
   // Animate score counter
   animateValue(heroScoreVal, 0, score, 1200);
 
@@ -120,7 +120,7 @@ function renderScore(assessment) {
   // Persona Pill
   if (heroBadgeEmoji) heroBadgeEmoji.textContent = persona.emoji;
   if (heroBadgeName) heroBadgeName.textContent = persona.name;
-  
+
   const heroBadgePill = document.getElementById('hero-badge-pill');
   if (heroBadgePill) heroBadgePill.style.opacity = '1';
 
@@ -135,7 +135,7 @@ function renderStreaksAndWeekly(streaks, challenges) {
   const safeStreaks = streaks || { current: 0 };
   const safeChallenges = Array.isArray(challenges) ? challenges : [];
   const currentStreak = safeStreaks.current || 0;
-  
+
   // Animate streak number counter
   animateValue(streakCountVal, 0, currentStreak, 1000, 0, currentStreak !== 1 ? ' Days' : ' Day');
 
@@ -190,7 +190,7 @@ function renderStreaksAndWeekly(streaks, challenges) {
 function renderBadges(earnedBadges, assessment, challenges, streaks) {
   if (!badgeGrid) return;
   badgeGrid.innerHTML = '';
-  
+
   const safeEarnedBadges = Array.isArray(earnedBadges) ? earnedBadges : [];
   const safeChallenges = Array.isArray(challenges) ? challenges : [];
   const safeStreaks = streaks || { current: 0 };
@@ -205,7 +205,7 @@ function renderBadges(earnedBadges, assessment, challenges, streaks) {
 
   Object.entries(BADGE_DEFS).forEach(([, def]) => {
     const isEarned = earnedIds.has(def.id);
-    
+
     // Calculate progress
     let currentProgress = 0;
     let targetProgress = 1;
@@ -237,7 +237,7 @@ function renderBadges(earnedBadges, assessment, challenges, streaks) {
     let rarityColor = 'rgba(255, 255, 255, 0.08)'; // Common
     let glowShadow = 'none';
     let iconBg = 'rgba(255, 255, 255, 0.03)';
-    
+
     if (def.rarity === 'Rare') {
       rarityColor = 'rgba(56, 189, 248, 0.3)';
       if (isEarned) {
@@ -266,7 +266,7 @@ function renderBadges(earnedBadges, assessment, challenges, streaks) {
 
     const badgeItem = document.createElement('div');
     badgeItem.className = `badge-item ${isEarned ? 'earned' : 'locked'}`;
-    
+
     // Add custom inline styling for rarities
     badgeItem.style.border = `1px solid ${rarityColor}`;
     if (isEarned) {
@@ -276,13 +276,13 @@ function renderBadges(earnedBadges, assessment, challenges, streaks) {
     // Set rich description tooltip
     const tooltipText = `${def.name} (${def.rarity} Achievement)\n\nRequirement: ${def.requirementText}\nStatus: ${isEarned ? 'Unlocked' : 'Locked (' + progressText + ')'}`;
     badgeItem.setAttribute('title', tooltipText);
-    
+
     badgeItem.innerHTML = `
       <div class="badge-glass-circle" style="background: ${iconBg}; border-color: ${isEarned ? 'var(--primary)' : 'rgba(255,255,255,0.06)'};" aria-hidden="true">${def.icon}</div>
       <span class="badge-item-name" style="margin-bottom: 2px;">${def.name}</span>
       <span style="font-size: 0.65rem; color: var(--text-dim); font-weight: 500;">${progressText}</span>
     `;
-    
+
     badgeGrid.appendChild(badgeItem);
   });
 }
@@ -296,16 +296,16 @@ function renderAnalyticsAndStats(challenges, badges, assessment, profile) {
 
   // 1. Footer Stats
   const completedChallengesList = safeChallenges.filter(c => c.status === 'completed');
-  
+
   // Use profile statistics if available, fallback to dynamic count
   const completedCount = safeProfile && typeof safeProfile.totalChallengesCompleted === 'number'
     ? safeProfile.totalChallengesCompleted
     : completedChallengesList.length;
-    
+
   const totalCo2Saved = safeProfile && typeof safeProfile.totalCo2Saved === 'number'
     ? safeProfile.totalCo2Saved
     : completedChallengesList.reduce((acc, c) => acc + (c.co2Saving || 0), 0);
-    
+
   const badgesEarnedCount = safeBadges.length;
 
   // Animate stats values on load
@@ -317,7 +317,7 @@ function renderAnalyticsAndStats(challenges, badges, assessment, profile) {
   // Calculate a mock percentage change: higher score = larger reduction trend
   const scoreVal = safeAssessment ? safeAssessment.planetHealthScore || 0 : 0;
   const trendPercentage = scoreVal * 0.18 + 2.5; // E.g. 80 score -> -16.9%
-  
+
   if (trendBadgeVal) {
     trendBadgeVal.textContent = `-${trendPercentage.toFixed(1)}%`;
   }
@@ -390,10 +390,10 @@ function renderActiveChallenge(challenges) {
       try {
         await completeChallenge(currentUser.uid, activeChallenge.id || activeChallenge.challengeId);
         showToast(`Outstanding! You completed the challenge: ${activeChallenge.title}!`, 'success');
-        
+
         // Trigger a score particle burst around the ring
         triggerBurstAtScoreRing();
-        
+
         await loadDashboardData(currentUser.uid);
       } catch (e) {
         console.error("Dashboard: Challenge completion error:", e);
@@ -459,10 +459,10 @@ function loadDailyQuote() {
   const diff = now - start;
   const oneDay = 1000 * 60 * 60 * 24;
   const dayOfYear = Math.floor(diff / oneDay);
-  
+
   const quoteIndex = dayOfYear % SUSTAINABILITY_QUOTES.length;
   const dailyQuote = SUSTAINABILITY_QUOTES[quoteIndex];
-  
+
   if (quoteText && quoteAuthor) {
     quoteText.textContent = `"${dailyQuote.text}"`;
     quoteAuthor.textContent = dailyQuote.author;
@@ -485,7 +485,7 @@ function initParticlesBackground() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  
+
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -527,7 +527,7 @@ function initParticlesBackground() {
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      
+
       if (p.isGlass) {
         // Large blurred glass motes
         ctx.fillStyle = `rgba(255, 255, 255, ${p.opacity})`;
@@ -568,7 +568,7 @@ function initParticlesBackground() {
       bp.x += bp.vx;
       bp.y += bp.vy;
       bp.opacity -= 0.015;
-      
+
       // Remove dead particles
       if (bp.opacity <= 0) {
         burstParticles.splice(i, 1);
@@ -577,7 +577,7 @@ function initParticlesBackground() {
 
     canvasAnimationId = requestAnimationFrame(animate);
   }
-  
+
   animate();
 }
 
@@ -593,13 +593,13 @@ document.addEventListener('DOMContentLoaded', () => {
   welcomeAvatarImg = document.getElementById('welcome-avatar-img');
   quoteText = document.getElementById('quote-text');
   quoteAuthor = document.getElementById('quote-author');
-  
+
   heroScoreVal = document.getElementById('hero-score-val');
   heroScoreFill = document.getElementById('hero-score-fill-el');
   heroBadgeEmoji = document.getElementById('hero-badge-emoji');
   heroBadgeName = document.getElementById('hero-badge-name');
   heroSummaryText = document.getElementById('hero-summary-text');
-  
+
   streakCountVal = document.getElementById('streak-count-val');
   streakMilestonesText = document.querySelector('#streak-milestones span:last-child');
   weeklyBubblesRow = document.getElementById('weekly-bubbles-row');
@@ -624,12 +624,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Monitor auth state and load data
   observeAuthState(async (user) => {
     if (!user) return;
-    
+
     currentUser = user;
     currentLoadedUid = user.uid;
-    
+
     if (welcomeTitle) {
-      welcomeTitle.textContent = `Welcome, ${user.displayName || 'Eco Pioneer'}! 👋`;
+      welcomeTitle.textContent = `Welcome, ${user.displayName || 'Eco Pioneer'}!`;
     }
     if (user.photoURL && welcomeAvatarImg) {
       welcomeAvatarImg.src = user.photoURL;

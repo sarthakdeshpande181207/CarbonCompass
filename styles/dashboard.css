@@ -11,8 +11,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   pointer-events: none;
   opacity: 0.8;
@@ -23,8 +23,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background: radial-gradient(
     450px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
     rgba(74, 222, 128, 0.05),

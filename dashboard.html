@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <title>Dashboard — Carbon Compass</title>
-  <meta name="description" content="Manage your weekly sustainability challenges, view your streak progress, track achievements, and consult with your AI coach on Carbon Compass.">
-  
+  <meta name="description"
+    content="Manage your weekly sustainability challenges, view your streak progress, track achievements, and consult with your AI coach on Carbon Compass.">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-  
+
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="/styles/base.css">
   <link rel="stylesheet" href="/styles/components.css">
   <link rel="stylesheet" href="/styles/animations.css">
   <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
+
 <body class="animate-fade-in">
 
   <!-- Keyboard Accessibility Skip Link -->
@@ -32,45 +35,45 @@
 
   <!-- Dashboard Main Layout -->
   <main class="dashboard-layout">
-    
+
     <!-- Neon Background Accents -->
     <div class="glow-bg-1" aria-hidden="true"></div>
     <div class="glow-bg-2" aria-hidden="true"></div>
 
     <div class="container dashboard-container">
-      
+
       <!-- Welcome Hero Section (Startup SaaS style) -->
       <header class="glass-panel welcome-hero-panel animate-slide-up" aria-label="Dashboard Welcome Header">
         <div class="welcome-info">
           <div class="welcome-avatar-wrap">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" 
-                 alt="User Profile Avatar" 
-                 id="welcome-avatar-img"
-                 class="welcome-avatar">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+              alt="User Profile Avatar" id="welcome-avatar-img" class="welcome-avatar">
           </div>
           <div class="welcome-text">
-            <h1 id="welcome-title">Welcome, Eco Pioneer! 👋</h1>
+            <h1 id="welcome-title">Welcome, Eco Pioneer!</h1>
             <p id="welcome-subtitle">Navigating carbon footprint tracking for a cooler planet.</p>
           </div>
         </div>
-        
+
         <!-- Quote of the Day container -->
         <div class="quote-box" id="quote-box" aria-label="Climate quote of the day">
-          <p class="quote-text" id="quote-text">"We do not inherit the Earth from our ancestors, we borrow it from our children."</p>
+          <p class="quote-text" id="quote-text">"We do not inherit the Earth from our ancestors, we borrow it from our
+            children."</p>
           <span class="quote-author" id="quote-author">Native American Proverb</span>
         </div>
       </header>
 
       <!-- Main Columns Grid -->
       <div class="dashboard-grid" id="dashboard-core">
-        
+
         <!-- LEFT COLUMN: Overview, Streak & Trend -->
         <div style="display: flex; flex-direction: column; gap: 40px;">
-          
+
           <!-- Hero Score Overview Panel (float-1) -->
-          <section class="glass-panel hero-overview float-1 animate-slide-up" style="animation-delay: 0.05s;" aria-label="Carbon Compass Score Overview">
+          <section class="glass-panel hero-overview float-1 animate-slide-up" style="animation-delay: 0.05s;"
+            aria-label="Carbon Compass Score Overview">
             <h2 class="panel-title" style="width: 100%;"><span aria-hidden="true">🧭</span> Planet Health</h2>
-            
+
             <div class="hero-score-ring">
               <svg class="hero-score-svg" viewBox="0 0 160 160" aria-hidden="true">
                 <defs>
@@ -88,19 +91,21 @@
               </div>
             </div>
 
-            <span class="hero-badge-pill" id="hero-badge-pill" style="opacity: 0; transition: opacity var(--transition-normal);">
+            <span class="hero-badge-pill" id="hero-badge-pill"
+              style="opacity: 0; transition: opacity var(--transition-normal);">
               <span id="hero-badge-emoji">🧭</span> <span id="hero-badge-name">Loading...</span>
             </span>
-            
+
             <p class="hero-summary-text" id="hero-summary-text">
               Analyzing score parameters...
             </p>
           </section>
 
           <!-- Weekly Progress & Streak Panel (float-2) -->
-          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.1s;" aria-label="Streak and Weekly Activity Tracker">
+          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.1s;"
+            aria-label="Streak and Weekly Activity Tracker">
             <h2 class="panel-title"><span aria-hidden="true">🔥</span> Streak & Progress</h2>
-            
+
             <!-- Streak box wrapper -->
             <div class="streak-box">
               <span class="streak-icon" aria-hidden="true">🔥</span>
@@ -153,11 +158,12 @@
 
         <!-- RIGHT COLUMN: Active Challenge, Achievements & Carbon Trend -->
         <div style="display: flex; flex-direction: column; gap: 40px;">
-          
+
           <!-- Challenge Center Panel (float-2) -->
-          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.15s;" aria-label="Active Weekly Eco Challenge">
+          <section class="glass-panel float-2 animate-slide-up" style="animation-delay: 0.15s;"
+            aria-label="Active Weekly Eco Challenge">
             <h2 class="panel-title"><span aria-hidden="true">🏆</span> Active Challenge</h2>
-            
+
             <div id="active-challenge-container">
               <!-- Glass loading shimmer skeleton by default -->
               <div class="active-challenge-card shimmer" style="min-height: 140px; border: none;">
@@ -169,7 +175,8 @@
           </section>
 
           <!-- Achievement Showcase Panel (float-1) -->
-          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.2s;" aria-label="Badge Achievements Gallery">
+          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.2s;"
+            aria-label="Badge Achievements Gallery">
             <h2 class="panel-title"><span aria-hidden="true">💎</span> Achievements</h2>
             <div class="badge-collection" id="badge-collection-grid">
               <!-- Glass loading shimmer circles by default -->
@@ -182,13 +189,16 @@
           </section>
 
           <!-- Carbon Trend Analytics Card (float-1) -->
-          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.25s;" aria-label="Emission footprint trend analytics">
+          <section class="glass-panel float-1 animate-slide-up" style="animation-delay: 0.25s;"
+            aria-label="Emission footprint trend analytics">
             <div class="trend-card-header">
-              <h2 class="panel-title" style="margin: 0; border: none; padding: 0;"><span aria-hidden="true">📈</span> Carbon Trend</h2>
+              <h2 class="panel-title" style="margin: 0; border: none; padding: 0;"><span aria-hidden="true">📈</span>
+                Carbon Trend</h2>
               <span class="trend-badge" id="trend-badge-val">-0.0%</span>
             </div>
-            <p class="text-muted" style="font-size: 0.9rem;">Your footprint is dropping! Great job adopting active transit and energy habits.</p>
-            
+            <p class="text-muted" style="font-size: 0.9rem;">Your footprint is dropping! Great job adopting active
+              transit and energy habits.</p>
+
             <!-- Mini Sparkline SVG -->
             <div class="sparkline-container" aria-hidden="true">
               <svg class="sparkline" viewBox="0 0 100 30" width="100%" height="60" style="display: block;">
@@ -209,11 +219,12 @@
       </div>
 
       <!-- Quick Action Hub -->
-      <section class="action-hub-section animate-slide-up" style="animation-delay: 0.3s;" aria-label="Quick Navigation Links">
+      <section class="action-hub-section animate-slide-up" style="animation-delay: 0.3s;"
+        aria-label="Quick Navigation Links">
         <h2 class="panel-title" style="border: none; margin: 0;"><span aria-hidden="true">⚡</span> Action Hub</h2>
-        
+
         <div class="action-hub-grid">
-          
+
           <!-- Card 1 -->
           <a href="/report" class="glass-panel action-card">
             <div class="action-icon-wrap" aria-hidden="true">📊</div>
@@ -254,7 +265,8 @@
       </section>
 
       <!-- Footer Statistics Bar -->
-      <section class="footer-stats-bar animate-slide-up" style="animation-delay: 0.35s;" aria-label="Carbon Compass Global Profile Stats">
+      <section class="footer-stats-bar animate-slide-up" style="animation-delay: 0.35s;"
+        aria-label="Carbon Compass Global Profile Stats">
         <div class="stat-item">
           <span class="stat-val" id="stat-challenges-completed">0</span>
           <span class="stat-lbl">Challenges Completed</span>
@@ -273,7 +285,8 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer" style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
+  <footer class="footer"
+    style="padding: 40px 0; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.9rem;">
     <div class="container">
       <p>&copy; 2026 Carbon Compass. Built for a sustainable future.</p>
     </div>
@@ -283,4 +296,5 @@
   <script type="module" src="/js/pages/dashboard.js"></script>
 
 </body>
+
 </html>

@@ -39,6 +39,9 @@
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-main);
+}
+
+.brand span:last-child {
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

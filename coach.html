@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>AI Sustainability Coach — Carbon Compass</title>
+  <meta name="description" content="Get personalized sustainability advice, habit recommendations, and eco-coaching from Sage, your AI companion on Carbon Compass.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/coach.css">
+</head>
+<body class="animate-fade-in" style="visibility: hidden;">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#coach-core-layout" class="skip-link">Skip to Coach Interface</a>
+
+  <!-- High-Performance Background Particles Canvas -->
+  <canvas id="bg-particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mouse Reactive Glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Shared Header Navigation placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Wrapper -->
+  <main class="coach-layout" id="coach-core-layout">
+    
+    <!-- Neon Background Accents -->
+    <div class="glow-bg-1" aria-hidden="true"></div>
+    <div class="glow-bg-2" aria-hidden="true"></div>
+
+    <div class="container coach-container">
+      
+      <!-- ONBOARDING EMPTY STATE PANEL (Hidden by default, shown if no assessment) -->
+      <section id="onboarding-panel" class="glass-panel onboarding-card animate-slide-up" style="display: none;" aria-label="Assessment onboarding check">
+        <div class="onboarding-icon" aria-hidden="true">🧙‍♂️</div>
+        <h1 class="onboarding-title">Meet Sage, Your AI Coach</h1>
+        <p class="onboarding-desc">
+          Welcome to Carbon Compass! I'm Sage, your personal sustainability mentor. 
+          To give you actionable, customized advice on reducing emissions and saving energy, I first need to analyze your lifestyle footprint.
+        </p>
+        <div class="onboarding-benefits">
+          <div class="benefit-item">
+            <span class="benefit-emoji" aria-hidden="true">📊</span>
+            <span><strong>Personalized Insights</strong>: Tips built directly around your weakest lifestyle categories.</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-emoji" aria-hidden="true">🏆</span>
+            <span><strong>Progression Tracks</strong>: Tailored guidance that evolves as you level up.</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-emoji" aria-hidden="true">🎯</span>
+            <span><strong>Actionable Challenges</strong>: Recommendations based on your carbon score.</span>
+          </div>
+        </div>
+        <a href="/assessment" class="btn btn-primary onboarding-btn">
+          Start Carbon Assessment <span>&rarr;</span>
+        </a>
+      </section>
+
+      <!-- ACTIVE COACHING LAYOUT (Hidden by default, shown if assessed) -->
+      <div id="active-coach-layout" class="coach-grid" style="display: none;">
+        
+        <!-- LEFT COLUMN: Snapshot & Memory Cards -->
+        <div class="coach-sidebar-stack">
+          
+          <!-- Sage Coach Profile Card -->
+          <section class="glass-panel profile-summary-card animate-slide-up" style="animation-delay: 0.05s;" aria-label="Advisor Profile">
+            <div class="sage-profile-header">
+              <div class="sage-avatar-ring" aria-hidden="true">
+                <span class="sage-emoji">🧙‍♂️</span>
+              </div>
+              <div class="sage-meta">
+                <h1 class="sage-name">Sage</h1>
+                <span class="sage-role">Sustainability Coach</span>
+              </div>
+            </div>
+            <p class="sage-profile-intro">
+              Friendly, motivating, and practical sustainability mentor. I analyze your lifestyle parameters to recommend habits that maximize carbon reductions.
+            </p>
+          </section>
+
+          <!-- Sustainability Health Snapshot Card -->
+          <section class="glass-panel snapshot-card animate-slide-up" style="animation-delay: 0.1s;" aria-label="Environmental Snapshot">
+            <h2 class="sidebar-card-title"><span aria-hidden="true">📊</span> Environmental Snapshot</h2>
+            
+            <div class="snapshot-grid">
+              
+              <!-- Metric item: Score -->
+              <div class="snapshot-item">
+                <span class="snapshot-emoji" aria-hidden="true">🌍</span>
+                <div class="snapshot-details">
+                  <span class="snapshot-value" id="snap-score">0</span>
+                  <span class="snapshot-label">Carbon Score</span>
+                </div>
+              </div>
+              
+              <!-- Metric item: Level -->
+              <div class="snapshot-item">
+                <span class="snapshot-emoji" aria-hidden="true">🏆</span>
+                <div class="snapshot-details">
+                  <span class="snapshot-value" id="snap-level">0</span>
+                  <span class="snapshot-label">XP Level</span>
+                </div>
+              </div>
+              
+              <!-- Metric item: Streak -->
+              <div class="snapshot-item">
+                <span class="snapshot-emoji" aria-hidden="true">🔥</span>
+                <div class="snapshot-details">
+                  <span class="snapshot-value" id="snap-streak">0 Days</span>
+                  <span class="snapshot-label">Habit Streak</span>
+                </div>
+              </div>
+              
+              <!-- Metric item: Active Challenge -->
+              <div class="snapshot-item" style="grid-column: span 2;">
+                <span class="snapshot-emoji" aria-hidden="true">🎯</span>
+                <div class="snapshot-details">
+                  <span class="snapshot-value text-truncate" id="snap-challenge">Loading...</span>
+                  <span class="snapshot-label">Active Challenge</span>
+                </div>
+              </div>
+
+              <!-- Metric item: Badges Earned -->
+              <div class="snapshot-item" style="grid-column: span 2; border-bottom: none; padding-bottom: 0; margin-bottom: 0;">
+                <span class="snapshot-emoji" aria-hidden="true">💎</span>
+                <div class="snapshot-details">
+                  <span class="snapshot-value" id="snap-badges">0 Badges</span>
+                  <span class="snapshot-label">Achievements Unlocked</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- What Sage Knows About You Memory Card -->
+          <section class="glass-panel memory-card animate-slide-up" style="animation-delay: 0.15s;" aria-label="Advisor Memory Registry">
+            <h2 class="sidebar-card-title"><span aria-hidden="true">🧠</span> What Sage Knows</h2>
+            
+            <div class="memory-grid">
+              <div class="memory-row">
+                <span class="memory-key">Archetype:</span>
+                <span class="memory-val" id="mem-archetype">Loading...</span>
+              </div>
+              <div class="memory-row">
+                <span class="memory-key">Strongest Area:</span>
+                <span class="memory-val" id="mem-strongest">Loading...</span>
+              </div>
+              <div class="memory-row">
+                <span class="memory-key">Focus Area:</span>
+                <span class="memory-val" id="mem-weakest">Loading...</span>
+              </div>
+              <div class="memory-row">
+                <span class="memory-key">Current XP:</span>
+                <span class="memory-val" id="mem-xp">0 XP</span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Conversational Chat Interface & Dynamic Insights -->
+        <div class="coach-main-content animate-slide-up" style="animation-delay: 0.05s;">
+          
+          <!-- AI Insight Cards Grid -->
+          <div class="insights-row">
+            
+            <!-- Card 1: Top Opportunity -->
+            <div class="glass-panel insight-mini-card">
+              <span class="insight-icon" aria-hidden="true">💡</span>
+              <div class="insight-info">
+                <h4>Top Opportunity</h4>
+                <p id="insight-opportunity">Reduce travel footprint</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Best Existing Habit -->
+            <div class="glass-panel insight-mini-card">
+              <span class="insight-icon" aria-hidden="true">🌟</span>
+              <div class="insight-info">
+                <h4>Best Habit</h4>
+                <p id="insight-best-habit">Low waste sorting</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Recommended Challenge -->
+            <div class="glass-panel insight-mini-card">
+              <span class="insight-icon" aria-hidden="true">🎯</span>
+              <div class="insight-info">
+                <h4>Next Pledge</h4>
+                <p id="insight-recommended-challenge">Thrifting weekend</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Chat Window Box -->
+          <section class="glass-panel chat-panel" aria-label="Sage Sustainability Chat Log">
+            
+            <!-- Scrollable Message Log -->
+            <div class="chat-log" id="chat-log-box">
+              
+              <!-- Loader skeleton template shown during initial loading -->
+              <div id="chat-loading-skeleton" style="display: flex; flex-direction: column; gap: 16px; width: 100%;">
+                <div class="shimmer-bubble coach-shimmer">
+                  <div class="skeleton-text" style="width: 80%; margin: 0;"></div>
+                  <div class="skeleton-text" style="width: 45%; margin: 8px 0 0 0;"></div>
+                </div>
+                <div class="shimmer-bubble user-shimmer">
+                  <div class="skeleton-text" style="width: 60%; margin: 0;"></div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Typing Indicator (pulsing dots) -->
+            <div class="typing-indicator" id="chat-typing-indicator" style="display: none;" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <!-- Suggested Prompts Chips Row -->
+            <div class="suggested-prompts-row" id="suggested-prompts-container">
+              <!-- Dynamically populated chips -->
+            </div>
+
+            <!-- Input area form container -->
+            <div class="chat-input-bar">
+              <div class="sage-buddy" id="sage-buddy" aria-label="Sage assistant companion">
+                <div class="sage-buddy-orb">
+                  <div class="sage-buddy-core"></div>
+                  <div class="sage-buddy-ring"></div>
+                </div>
+                <div class="sage-buddy-speech" id="sage-buddy-speech">Hi! 👋</div>
+              </div>
+              <textarea 
+                id="chat-user-input" 
+                class="chat-textarea" 
+                placeholder="Ask Sage a question about your carbon footprint..." 
+                rows="1"
+                aria-label="Write a message to Sage"></textarea>
+              <button class="btn btn-primary chat-send-btn" id="chat-send-btn" aria-label="Send message">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- JS Module Scripts -->
+  <script type="module" src="/js/pages/coach.js"></script>
+
+</body>
+</html>
