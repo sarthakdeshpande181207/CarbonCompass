@@ -282,3 +282,42 @@ export const getCoachSessions = async (uid) => {
     throw error;
   }
 };
+
+/* --- Simulation Pledges --- */
+const SB_DB_SIMULATION = 'carbon_compass_sb_simulation_';
+
+export const saveLatestSimulation = async (uid, simulationData) => {
+  const data = {
+    ...simulationData,
+    committedAt: new Date().toISOString()
+  };
+
+  if (!isFirebaseConfigured()) {
+    localStorage.setItem(`${SB_DB_SIMULATION}${uid}`, JSON.stringify(data));
+    return;
+  }
+
+  try {
+    const docRef = doc(db, 'users', uid, 'simulation', 'latest');
+    await setDoc(docRef, data);
+  } catch (error) {
+    console.error("Firestore: Error saving latest simulation", error);
+    throw error;
+  }
+};
+
+export const getLatestSimulation = async (uid) => {
+  if (!isFirebaseConfigured()) {
+    const raw = localStorage.getItem(`${SB_DB_SIMULATION}${uid}`);
+    return raw ? JSON.parse(raw) : null;
+  }
+
+  try {
+    const docRef = doc(db, 'users', uid, 'simulation', 'latest');
+    const snap = await getDoc(docRef);
+    return snap.exists() ? snap.data() : null;
+  } catch (error) {
+    console.error("Firestore: Error getting latest simulation", error);
+    throw error;
+  }
+};

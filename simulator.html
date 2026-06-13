@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Impact Simulator — Carbon Compass</title>
+  <meta name="description" content="Simulate how custom lifestyle changes in transport, energy, and diet affect your composite Planet Health Score and annual carbon emissions.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/simulator.css">
+</head>
+<body class="animate-fade-in" style="visibility: hidden;">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#simulator-core-layout" class="skip-link">Skip to Simulator</a>
+
+  <!-- High-Performance Background Particles Canvas -->
+  <canvas id="bg-particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mouse Reactive Glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Shared Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Layout -->
+  <main class="simulator-layout" id="simulator-core-layout">
+    
+    <!-- Neon Background Accents -->
+    <div class="glow-bg-1" aria-hidden="true"></div>
+    <div class="glow-bg-2" aria-hidden="true"></div>
+
+    <div class="container simulator-container">
+      
+      <!-- ONBOARDING EMPTY STATE PANEL (Shown if no assessment completed) -->
+      <section id="onboarding-panel" class="glass-panel onboarding-card animate-slide-up" style="display: none;" aria-label="Assessment onboarding check">
+        <div class="onboarding-icon" aria-hidden="true">🔮</div>
+        <h1 class="onboarding-title">Unlock Impact Simulator</h1>
+        <p class="onboarding-desc">
+          Complete your carbon assessment to unlock personalized simulations. Discover how custom shifts in transportation, eating habits, and home utilities can reshape your environmental projection.
+        </p>
+        <a href="/assessment" class="btn btn-primary onboarding-btn">
+          Start Assessment <span>&rarr;</span>
+        </a>
+      </section>
+
+      <!-- ACTIVE SIMULATOR CONTENT (Shown if assessment completed) -->
+      <div id="active-simulator-layout" style="display: none;">
+        
+        <!-- Premium Hero Header -->
+        <header class="simulator-hero animate-slide-up" style="animation-delay: 0.02s;">
+          <div class="hero-left">
+            <h1 class="hero-title">Impact Simulator</h1>
+            <p class="hero-subtitle">Explore how small lifestyle changes can reshape your carbon future.</p>
+          </div>
+          <div class="hero-right-score glass-panel">
+            <div class="score-indicator-box">
+              <span class="score-indicator-label">Current Score</span>
+              <span id="current-score-num" class="score-indicator-val score-curr">--</span>
+            </div>
+            <span class="score-indicator-arrow" aria-hidden="true">&rarr;</span>
+            <div class="score-indicator-box">
+              <span class="score-indicator-label">Projected Score</span>
+              <span id="projected-score-num" class="score-indicator-val score-proj text-primary">--</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Grid Layout -->
+        <div class="simulator-grid">
+          
+          <!-- LEFT COLUMN: Scenario Presets & Category Sliders -->
+          <div class="simulator-controls-stack">
+            
+            <!-- Recommended Scenario Presets Card -->
+            <section class="glass-panel presets-card animate-slide-up" style="animation-delay: 0.05s;" aria-label="Scenario presets selection">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">⚡</span> Recommended Scenarios</h2>
+              <p class="preset-description">Choose a preset strategy to instantly configure the sliders to optimized carbon habits:</p>
+              <div class="presets-row">
+                <button class="preset-btn" id="preset-eco-starter" data-preset="starter">
+                  <span class="preset-emoji">🌱</span> Eco Starter
+                </button>
+                <button class="preset-btn" id="preset-green-commuter" data-preset="commuter">
+                  <span class="preset-emoji">🚗</span> Green Commuter
+                </button>
+                <button class="preset-btn" id="preset-plant-powered" data-preset="diet">
+                  <span class="preset-emoji">🍽️</span> Plant-Powered
+                </button>
+                <button class="preset-btn" id="preset-net-zero" data-preset="netzero">
+                  <span class="preset-emoji">🌍</span> Net-Zero Explorer
+                </button>
+              </div>
+            </section>
+
+            <!-- Sliders Input Panel -->
+            <section class="glass-panel sliders-panel animate-slide-up" style="animation-delay: 0.1s;" aria-label="Lifestyle sliders">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔧</span> Fine-Tune Lifestyle Habits</h2>
+              
+              <div class="sliders-list">
+                
+                <!-- Transport Slider -->
+                <div class="slider-group" id="group-transport">
+                  <div class="slider-header">
+                    <span class="slider-label"><span aria-hidden="true">🚗</span> Commute Mode & Solo Driving</span>
+                    <span class="slider-value-readout" id="readout-transport">Loading...</span>
+                  </div>
+                  <div class="slider-track-wrap">
+                    <input type="range" min="0" max="4" step="1" class="slider-input" id="slider-transport" aria-label="Commute Mode Solo Driving slider">
+                  </div>
+                  <div class="slider-effect-footer">
+                    <span class="slider-baseline-text" id="baseline-transport">Baseline: --</span>
+                    <span class="slider-savings-indicator" id="savings-transport">Saves: 0 kg CO₂/yr</span>
+                  </div>
+                </div>
+
+                <!-- Diet Slider -->
+                <div class="slider-group" id="group-diet">
+                  <div class="slider-header">
+                    <span class="slider-label"><span aria-hidden="true">🍽️</span> Daily Diet Choices</span>
+                    <span class="slider-value-readout" id="readout-diet">Loading...</span>
+                  </div>
+                  <div class="slider-track-wrap">
+                    <input type="range" min="0" max="4" step="1" class="slider-input" id="slider-diet" aria-label="Daily Diet Choices slider">
+                  </div>
+                  <div class="slider-effect-footer">
+                    <span class="slider-baseline-text" id="baseline-diet">Baseline: --</span>
+                    <span class="slider-savings-indicator" id="savings-diet">Saves: 0 kg CO₂/yr</span>
+                  </div>
+                </div>
+
+                <!-- Energy Slider -->
+                <div class="slider-group" id="group-energy">
+                  <div class="slider-header">
+                    <span class="slider-label"><span aria-hidden="true">⚡</span> Renewable Energy & Thermostat</span>
+                    <span class="slider-value-readout" id="readout-energy">Loading...</span>
+                  </div>
+                  <div class="slider-track-wrap">
+                    <input type="range" min="0" max="3" step="1" class="slider-input" id="slider-energy" aria-label="Renewable Energy slider">
+                  </div>
+                  <div class="slider-effect-footer">
+                    <span class="slider-baseline-text" id="baseline-energy">Baseline: --</span>
+                    <span class="slider-savings-indicator" id="savings-energy">Saves: 0 kg CO₂/yr</span>
+                  </div>
+                </div>
+
+                <!-- Shopping Slider -->
+                <div class="slider-group" id="group-shopping">
+                  <div class="slider-header">
+                    <span class="slider-label"><span aria-hidden="true">🛍️</span> Sustainable Shopping & Waste</span>
+                    <span class="slider-value-readout" id="readout-shopping">Loading...</span>
+                  </div>
+                  <div class="slider-track-wrap">
+                    <input type="range" min="0" max="3" step="1" class="slider-input" id="slider-shopping" aria-label="Sustainable Shopping slider">
+                  </div>
+                  <div class="slider-effect-footer">
+                    <span class="slider-baseline-text" id="baseline-shopping">Baseline: --</span>
+                    <span class="slider-savings-indicator" id="savings-shopping">Saves: 0 kg CO₂/yr</span>
+                  </div>
+                </div>
+
+                <!-- Travel Slider -->
+                <div class="slider-group" id="group-travel">
+                  <div class="slider-header">
+                    <span class="slider-label"><span aria-hidden="true">✈️</span> Annual Round-Trip Flights</span>
+                    <span class="slider-value-readout" id="readout-travel">Loading...</span>
+                  </div>
+                  <div class="slider-track-wrap">
+                    <input type="range" min="0" max="3" step="1" class="slider-input" id="slider-travel" aria-label="Annual Flights slider">
+                  </div>
+                  <div class="slider-effect-footer">
+                    <span class="slider-baseline-text" id="baseline-travel">Baseline: --</span>
+                    <span class="slider-savings-indicator" id="savings-travel">Saves: 0 kg CO₂/yr</span>
+                  </div>
+                </div>
+
+              </div>
+            </section>
+          </div>
+
+          <!-- RIGHT COLUMN: Score Ring, Bar Charts, Equivalency Cards & Commits -->
+          <div class="simulator-analytics-stack">
+            
+            <!-- Circular Projection Gauge -->
+            <section class="glass-panel score-gauge-card animate-slide-up" style="animation-delay: 0.08s;" aria-label="Projected score visualization">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔮</span> Projected Impact</h2>
+              
+              <div class="projection-gauge-container">
+                <div class="hero-score-ring">
+                  <svg class="hero-score-svg" viewBox="0 0 160 160" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="var(--secondary)" />
+                        <stop offset="100%" stop-color="var(--primary)" />
+                      </linearGradient>
+                    </defs>
+                    <circle class="hero-score-track" cx="80" cy="80" r="70"></circle>
+                    <circle class="hero-score-fill" id="simulated-score-fill" cx="80" cy="80" r="70"></circle>
+                  </svg>
+                  <div class="hero-score-center">
+                    <span class="hero-score-num" id="simulated-score-val">--</span>
+                    <span class="hero-score-label">Projected</span>
+                  </div>
+                </div>
+                
+                <div class="projection-summary-pill" id="simulated-persona-pill">
+                  <span id="simulated-persona-emoji">🧭</span> <span id="simulated-persona-name">Loading...</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Real-Time Carbon Breakdown Comparison -->
+            <section class="glass-panel comparison-chart-card animate-slide-up" style="animation-delay: 0.12s;" aria-label="Category emissions comparison">
+              <h2 class="panel-subtitle-glow" style="margin-bottom: 16px;"><span aria-hidden="true">📊</span> Category Emissions Comparison</h2>
+              
+              <div class="comparison-bars-container">
+                <!-- Transport -->
+                <div class="comparison-item">
+                  <div class="comparison-labels">
+                    <span class="comparison-name">🚗 Transport</span>
+                    <span class="comparison-values"><span class="curr-val" id="chart-curr-transport">--</span> &rarr; <span class="sim-val" id="chart-sim-transport">--</span> tons</span>
+                  </div>
+                  <div class="comparison-visual-track">
+                    <div class="comparison-bar current" id="bar-curr-transport" style="width: 0%;"></div>
+                    <div class="comparison-bar simulated" id="bar-sim-transport" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Diet -->
+                <div class="comparison-item">
+                  <div class="comparison-labels">
+                    <span class="comparison-name">🍽️ Diet</span>
+                    <span class="comparison-values"><span class="curr-val" id="chart-curr-diet">--</span> &rarr; <span class="sim-val" id="chart-sim-diet">--</span> tons</span>
+                  </div>
+                  <div class="comparison-visual-track">
+                    <div class="comparison-bar current" id="bar-curr-diet" style="width: 0%;"></div>
+                    <div class="comparison-bar simulated" id="bar-sim-diet" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Energy -->
+                <div class="comparison-item">
+                  <div class="comparison-labels">
+                    <span class="comparison-name">⚡ Energy Usage</span>
+                    <span class="comparison-values"><span class="curr-val" id="chart-curr-energy">--</span> &rarr; <span class="sim-val" id="chart-sim-energy">--</span> tons</span>
+                  </div>
+                  <div class="comparison-visual-track">
+                    <div class="comparison-bar current" id="bar-curr-energy" style="width: 0%;"></div>
+                    <div class="comparison-bar simulated" id="bar-sim-energy" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Shopping -->
+                <div class="comparison-item">
+                  <div class="comparison-labels">
+                    <span class="comparison-name">🛍️ Shopping & Waste</span>
+                    <span class="comparison-values"><span class="curr-val" id="chart-curr-shopping">--</span> &rarr; <span class="sim-val" id="chart-sim-shopping">--</span> tons</span>
+                  </div>
+                  <div class="comparison-visual-track">
+                    <div class="comparison-bar current" id="bar-curr-shopping" style="width: 0%;"></div>
+                    <div class="comparison-bar simulated" id="bar-sim-shopping" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Travel -->
+                <div class="comparison-item">
+                  <div class="comparison-labels">
+                    <span class="comparison-name">✈️ Flights & Travel</span>
+                    <span class="comparison-values"><span class="curr-val" id="chart-curr-travel">--</span> &rarr; <span class="sim-val" id="chart-sim-travel">--</span> tons</span>
+                  </div>
+                  <div class="comparison-visual-track">
+                    <div class="comparison-bar current" id="bar-curr-travel" style="width: 0%;"></div>
+                    <div class="comparison-bar simulated" id="bar-sim-travel" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Premium Glass Equivalency Cards -->
+            <section class="equivalencies-grid animate-slide-up" style="animation-delay: 0.15s;" aria-label="Carbon equivalency cards">
+              
+              <!-- Card: Trees Saved -->
+              <div class="glass-panel stat-card">
+                <span class="stat-card-icon" aria-hidden="true">🌳</span>
+                <div class="stat-card-info">
+                  <span class="stat-card-val" id="equiv-trees">0</span>
+                  <span class="stat-card-label">Trees Saved / Yr</span>
+                </div>
+              </div>
+
+              <!-- Card: Cars Removed -->
+              <div class="glass-panel stat-card">
+                <span class="stat-card-icon" aria-hidden="true">🚗</span>
+                <div class="stat-card-info">
+                  <span class="stat-card-val" id="equiv-cars">0.0</span>
+                  <span class="stat-card-label">Cars Removed / Yr</span>
+                </div>
+              </div>
+
+              <!-- Card: Energy Saved -->
+              <div class="glass-panel stat-card">
+                <span class="stat-card-icon" aria-hidden="true">💡</span>
+                <div class="stat-card-info">
+                  <span class="stat-card-val" id="equiv-energy">0 kWh</span>
+                  <span class="stat-card-label">Annual Energy Saved</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Recommended Next Mission -->
+            <section class="glass-panel recommended-mission-card animate-slide-up" style="animation-delay: 0.18s;" aria-label="Suggested Eco Challenge">
+              <h2 class="panel-subtitle-glow" style="margin-bottom: 12px;"><span aria-hidden="true">🎯</span> Recommended Next Mission</h2>
+              <div id="recommended-challenge-container">
+                <!-- Will be dynamically generated matching the biggest improvement category -->
+                <div class="recommended-card-inner">
+                  <div class="rec-icon">🧭</div>
+                  <div class="rec-details">
+                    <h3 class="rec-title">No optimization selected</h3>
+                    <p class="rec-desc">Drag sliders to reduce your simulated carbon emissions and discover challenge recommendations.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+
+        <!-- Centered Action Pledge Commit card -->
+        <div class="commit-section-wrapper animate-slide-up" style="animation-delay: 0.22s;">
+          <section class="glass-panel action-commit-card" aria-label="Commit Pledges and Action History">
+            <h2 class="panel-subtitle-glow" style="margin-bottom: 14px; justify-content: center;"><span aria-hidden="true">📝</span> Commit to Your Green Future</h2>
+            
+            <!-- Committed Simulation History -->
+            <div class="committed-history-box" id="simulated-history-box" style="display: none;">
+              <span class="history-label">Last Saved Simulation:</span>
+              <div class="history-stats">
+                <span class="history-stat-item"><span aria-hidden="true">🌿</span> Saved: <strong id="history-saved-co2">--</strong> tons CO₂/yr</span>
+                <span class="history-stat-item"><span aria-hidden="true">🌳</span> Equivalent: <strong id="history-saved-trees">--</strong> trees</span>
+              </div>
+            </div>
+
+            <!-- Pledge/Commit details -->
+            <div class="commit-pledge-info">
+              <p id="commit-pledge-description">You are simulating a net annual reduction of <strong id="commit-total-savings">0.0 tons</strong> of CO₂.</p>
+              <div id="badge-lock-status-alert" class="badge-status-alert" style="display: none;">
+                <span class="alert-icon">⚡</span>
+                <span class="alert-text">Simulating enough savings to unlock the legendary **Carbon Saver** Badge!</span>
+              </div>
+            </div>
+
+            <div class="commit-btn-wrapper">
+              <button class="btn btn-primary" id="commit-pledge-btn" disabled>
+                Commit to this Lifestyle Change
+              </button>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- JS Scripts -->
+  <script type="module" src="/js/pages/simulator.js"></script>
+</body>
+</html>

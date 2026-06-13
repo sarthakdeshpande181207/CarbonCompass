@@ -584,6 +584,7 @@
   border-top: 1px solid var(--border-color);
   background: rgba(0,0,0,0.15);
   scrollbar-width: none; /* hide default scroll */
+  flex-shrink: 0;
 }
 
 .suggested-prompts-row::-webkit-scrollbar {
@@ -617,6 +618,7 @@
   padding: 20px 32px 24px 32px;
   background: var(--bg-card);
   align-items: center;
+  flex-shrink: 0;
 }
 
 .chat-textarea {
@@ -634,6 +636,12 @@
   outline: none;
   transition: all var(--transition-fast);
   line-height: 1.4;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.chat-textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-textarea:focus {

@@ -46,8 +46,8 @@ export const initRouter = () => {
         const hasCompletedAssessment = !!(assessment && assessment.planetHealthScore !== undefined);
 
         if (!hasCompletedAssessment) {
-          // Authenticated but no assessment -> must take assessment
-          if (currentPath !== PATH_ASSESSMENT && currentPath !== PATH_LANDING) {
+          // Authenticated but no assessment -> must take assessment, except on Coach, Simulator, and Profile pages
+          if (currentPath !== PATH_ASSESSMENT && currentPath !== PATH_LANDING && currentPath !== '/coach' && currentPath !== '/simulator' && currentPath !== '/profile') {
             console.log("Assessment pending: Redirecting to Assessment Page");
             window.location.href = PATH_ASSESSMENT;
           }

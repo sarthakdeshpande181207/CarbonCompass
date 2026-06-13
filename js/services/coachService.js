@@ -163,10 +163,18 @@ export class CoachService {
           message: userMessage,
           history: this.history.slice(0, -1), // pass history excluding the message just added
           context: {
+            name: context.name,
             score: context.score,
-            breakdown: context.assessmentData?.carbonBreakdown || {},
+            archetype: context.archetype,
+            strongestCategory: context.strongestCategory,
+            weakestCategory: context.weakestCategory,
             activeChallenge: context.activeChallengeTitle,
-            completedChallenges: context.completedChallengesCount
+            xp: context.xp,
+            level: context.level,
+            streakCount: context.streakCount,
+            badgesCount: context.badgesCount,
+            completedChallengesCount: context.completedChallengesCount,
+            breakdown: context.assessmentData?.carbonBreakdown || {}
           }
         })
       });

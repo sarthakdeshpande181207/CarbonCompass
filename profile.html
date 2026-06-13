@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sustainability Passport — Carbon Compass</title>
+  <meta name="description" content="View your sustainability identity passport, levels progression, earned achievement badges, streaks history, and lifetime carbon savings legacy.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <link rel="stylesheet" href="/styles/animations.css">
+  <link rel="stylesheet" href="/styles/profile.css">
+</head>
+<body class="animate-fade-in" style="visibility: hidden;">
+
+  <!-- Keyboard Accessibility Skip Link -->
+  <a href="#profile-core-layout" class="skip-link">Skip to Profile Page</a>
+
+  <!-- High-Performance Background Particles Canvas -->
+  <canvas id="bg-particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mouse Reactive Glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Shared Header Navigation -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Main Content Layout -->
+  <main class="profile-layout" id="profile-core-layout">
+    
+    <!-- Neon Background Accents -->
+    <div class="glow-bg-1" aria-hidden="true"></div>
+    <div class="glow-bg-2" aria-hidden="true"></div>
+
+    <div class="container profile-container">
+      
+      <!-- ONBOARDING EMPTY STATE: Layered absolute card overlay -->
+      <section id="onboarding-panel" class="glass-panel onboarding-card animate-slide-up" style="display: none;" aria-label="Assessment onboarding check">
+        <div class="onboarding-icon" aria-hidden="true">🔒</div>
+        <h1 class="onboarding-title">Sustainability Identity Locked</h1>
+        <p class="onboarding-desc">
+          Complete your Carbon Assessment to unlock your Sustainability Identity, track your level progression, and showcase unlocked achievement badges.
+        </p>
+        <a href="/assessment" class="btn btn-primary onboarding-btn">
+          Start Assessment <span>&rarr;</span>
+        </a>
+      </section>
+
+      <!-- MOCK LOCKED PREVIEW BACKDROP (Visible only when unassessed, blurred via CSS) -->
+      <div id="locked-profile-preview" class="locked-preview-blur" style="display: none;">
+        <header class="glass-panel profile-hero-card">
+          <div class="hero-avatar-area">
+            <div class="avatar-ring mock-avatar">🔒</div>
+            <div class="hero-meta">
+              <h2>Guest Pioneer</h2>
+              <p>Email not verified</p>
+            </div>
+          </div>
+        </header>
+        <div class="profile-grid">
+          <div class="profile-sidebar">
+            <div class="glass-panel"><h3 class="panel-subtitle">Sustainability Identity</h3></div>
+            <div class="glass-panel"><h3 class="panel-subtitle">Streak Stats</h3></div>
+          </div>
+          <div class="profile-analytics">
+            <div class="glass-panel"><h3 class="panel-subtitle">Achievements</h3></div>
+            <div class="glass-panel"><h3 class="panel-subtitle">Sustainability Journey</h3></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVE ACCOUNT DASHBOARD (Shown when user has assessment results) -->
+      <div id="active-profile-layout" style="display: none;">
+        
+        <!-- Hero Card Block -->
+        <header class="glass-panel profile-hero-card animate-slide-up" style="animation-delay: 0.02s;">
+          <!-- Localized Floating Particles -->
+          <div class="hero-floating-particles" aria-hidden="true">
+            <span class="particle p1"></span>
+            <span class="particle p2"></span>
+            <span class="particle p3"></span>
+            <span class="particle p4"></span>
+            <span class="particle p5"></span>
+            <span class="particle p6"></span>
+          </div>
+
+          <div class="hero-top-split">
+            <!-- Left Info: Avatar & Text -->
+            <div class="hero-identity-zone">
+              <div class="avatar-container-wrap">
+                <div class="avatar-bg-glow" aria-hidden="true"></div>
+                <div class="profile-avatar-wrapper">
+                  <img src="" alt="User Avatar" id="hero-avatar-img" class="profile-avatar-img">
+                </div>
+              </div>
+              <div class="hero-meta">
+                <h1 id="hero-display-name">Eco Pioneer</h1>
+                <p id="hero-email">loading...</p>
+              </div>
+            </div>
+            
+            <!-- Center Visual separator (Visible on desktop) -->
+            <div class="hero-visual-divider" aria-hidden="true"></div>
+
+            <!-- Right Info: Profile Completion SVG Ring with milestones ticks -->
+            <div class="hero-completion-area">
+              <div class="completion-gauge-box">
+                <div class="svg-ring-container">
+                  <svg viewBox="0 0 36 36" class="circular-chart primary" aria-hidden="true">
+                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="circle" id="profile-progress-circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <!-- Milestone circular ticks representing Assessment, Challenge, Badge, Level 2, Streak -->
+                    <circle cx="33.14" cy="13.08" r="1.2" class="ring-tick" id="tick-assess" />
+                    <circle cx="27.36" cy="30.87" r="1.2" class="ring-tick" id="tick-challenge" />
+                    <circle cx="8.64" cy="30.87" r="1.2" class="ring-tick" id="tick-badge" />
+                    <circle cx="2.86" cy="13.08" r="1.2" class="ring-tick" id="tick-level" />
+                    <circle cx="18" cy="2.08" r="1.2" class="ring-tick" id="tick-streak" />
+                    <text x="18" y="20.35" class="percentage" id="profile-progress-text">0%</text>
+                  </svg>
+                </div>
+                <span class="completion-label">Passport Progress</span>
+              </div>
+              
+              <ul class="completion-checklist" id="profile-checklist-ul">
+                <li id="chk-assess"><span class="chk-icon">✖</span> Assessment Complete</li>
+                <li id="chk-challenge"><span class="chk-icon">✖</span> First Challenge</li>
+                <li id="chk-badge"><span class="chk-icon">✖</span> First Badge</li>
+                <li id="chk-level"><span class="chk-icon">✖</span> Level 2</li>
+                <li id="chk-streak"><span class="chk-icon">✖</span> Active Streak</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- XP Progression Bar -->
+          <div class="hero-xp-section">
+            <div class="xp-bar-header">
+              <span class="xp-level-title" id="xp-current-level">Level --</span>
+              <span class="xp-numerical-label" id="xp-numerical-readout">0 / 0 XP</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div class="progress-fill" id="xp-progress-fill" style="width: 0%;">
+                <div class="progress-fill-glow-tip"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sustainability Rank & Global Archetype under XP Bar -->
+          <div class="hero-sustainability-badges">
+            <div class="rank-badge-container">
+              <span class="badge-label">Sustainability Rank</span>
+              <div class="rank-badge-glow-wrap">
+                <span id="hero-sustainability-rank" class="rank-badge">--</span>
+              </div>
+            </div>
+            <div class="archetype-badge-container">
+              <span class="badge-label">Global Archetype</span>
+              <div class="archetype-badge-glow-wrap">
+                <span id="hero-global-archetype" class="archetype-value">--</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Profile Columns Grid -->
+        <div class="profile-grid">
+          
+          <!-- LEFT COLUMN: Identity, Streak Stats & Sustainability Legacy -->
+          <div class="profile-sidebar-stack">
+            
+            <!-- Sustainability Identity Card -->
+            <section class="glass-panel identity-card animate-slide-up" style="animation-delay: 0.05s;" aria-label="Sustainability Identity">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🌱</span> Sustainability Identity</h2>
+              
+              <div class="identity-stats-list">
+                <div class="identity-item">
+                  <span class="identity-label">Planet Health Score</span>
+                  <div class="identity-val-score">
+                    <span id="identity-score-num">--</span>
+                    <span class="score-scale">/100</span>
+                  </div>
+                </div>
+
+                <div class="identity-item">
+                  <span class="identity-label">Carbon Archetype</span>
+                  <span id="identity-archetype-name" class="identity-val text-primary">--</span>
+                </div>
+
+                <div class="identity-item">
+                  <span class="identity-label">Strongest Area</span>
+                  <span id="identity-strongest-category" class="identity-val text-green">--</span>
+                </div>
+
+                <div class="identity-item">
+                  <span class="identity-label">Weakest / Focus Area</span>
+                  <span id="identity-weakest-category" class="identity-val text-orange">--</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Streak Statistics Card -->
+            <section class="glass-panel stats-card animate-slide-up" style="animation-delay: 0.1s;" aria-label="Streak and Challenges Statistics">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🔥</span> Streak & Challenge Stats</h2>
+              
+              <div class="stats-counter-grid">
+                <!-- Current Streak -->
+                <div class="counter-box streak-current">
+                  <span class="counter-icon" aria-hidden="true">🔥</span>
+                  <span class="counter-val" id="stat-current-streak">0</span>
+                  <span class="counter-label">Current Streak</span>
+                </div>
+
+                <!-- Longest Streak -->
+                <div class="counter-box streak-longest">
+                  <span class="counter-icon" aria-hidden="true">🏆</span>
+                  <span class="counter-val" id="stat-longest-streak">0</span>
+                  <span class="counter-label">Longest Streak</span>
+                </div>
+
+                <!-- Active Challenges -->
+                <div class="counter-box missions-active">
+                  <span class="counter-icon" aria-hidden="true">🎯</span>
+                  <span class="counter-val" id="stat-active-challenges">0</span>
+                  <span class="counter-label">Active Missions</span>
+                </div>
+
+                <!-- Challenges Completed -->
+                <div class="counter-box missions-completed">
+                  <span class="counter-icon" aria-hidden="true">✅</span>
+                  <span class="counter-val" id="stat-completed-challenges">0</span>
+                  <span class="counter-label">Completed Missions</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Sustainability Legacy Card -->
+            <section class="glass-panel legacy-card animate-slide-up" style="animation-delay: 0.12s;" aria-label="Sustainability Legacy">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🌳</span> Sustainability Legacy</h2>
+              
+              <div class="legacy-stats-grid">
+                <!-- Stats Item: Total CO2 Saved -->
+                <div class="legacy-stat-box co2-saved">
+                  <span class="legacy-stat-icon" aria-hidden="true">🌿</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-total-co2">0.0 kg</span>
+                    <span class="legacy-stat-label">Total CO₂ Saved</span>
+                  </div>
+                </div>
+
+                <!-- Stats Item: Trees equivalent -->
+                <div class="legacy-stat-box trees">
+                  <span class="legacy-stat-icon" aria-hidden="true">🌳</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-trees-equiv">0</span>
+                    <span class="legacy-stat-label">Trees Equivalent</span>
+                  </div>
+                </div>
+
+                <!-- Stats Item: Environmental Impact -->
+                <div class="legacy-stat-box eco-impact">
+                  <span class="legacy-stat-icon" aria-hidden="true">🌍</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-eco-impact">--</span>
+                    <span class="legacy-stat-label">Eco Impact</span>
+                  </div>
+                </div>
+
+                <!-- Stats Item: Simulator Commitments -->
+                <div class="legacy-stat-box commitments">
+                  <span class="legacy-stat-icon" aria-hidden="true">⚡</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-commitments">0</span>
+                    <span class="legacy-stat-label">Simulator Pledges</span>
+                  </div>
+                </div>
+
+                <!-- Stats Item: Active Days -->
+                <div class="legacy-stat-box active-days">
+                  <span class="legacy-stat-icon" aria-hidden="true">📅</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-active-days">0</span>
+                    <span class="legacy-stat-label">Total Active Days</span>
+                  </div>
+                </div>
+
+                <!-- Stats Item: Avg score -->
+                <div class="legacy-stat-box health-score">
+                  <span class="legacy-stat-icon" aria-hidden="true">📈</span>
+                  <div class="legacy-stat-info">
+                    <span class="legacy-stat-val" id="legacy-avg-score">0</span>
+                    <span class="legacy-stat-label">Avg Health Score</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Generated Impact Text -->
+              <div class="legacy-summary-box">
+                <span class="legacy-summary-label">Impact Statement</span>
+                <p id="legacy-summary-text" class="legacy-summary-desc">
+                  Your actions have already prevented approximately 0 kg of CO₂ emissions. Swapping solitary driving for transit and reducing waste are driving your climate credentials!
+                </p>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Achievements Showcase, Current Goals & Journey Timeline -->
+          <div class="profile-analytics-stack">
+            
+            <!-- Achievements Showcase Card -->
+            <section class="glass-panel achievements-showcase-card animate-slide-up" style="animation-delay: 0.08s;" aria-label="Badge Achievements Gallery">
+              <h2 class="panel-subtitle-glow" style="margin-bottom: 14px;"><span aria-hidden="true">💎</span> Achievements Showcase</h2>
+              
+              <!-- Achievement Statistics Summary -->
+              <div class="achievements-summary-banner">
+                <div class="ach-summary-item">
+                  <span class="ach-sum-val" id="ach-unlocked-ratio">0 / 0</span>
+                  <span class="ach-sum-label">Badges Unlocked</span>
+                </div>
+                <div class="ach-summary-item">
+                  <span class="ach-sum-val" id="ach-completion-pct">0%</span>
+                  <span class="ach-sum-label">Completion</span>
+                </div>
+                <div class="ach-summary-item">
+                  <span class="ach-sum-val text-secondary" id="ach-rarest-badge">--</span>
+                  <span class="ach-sum-label">Rarest Earned</span>
+                </div>
+              </div>
+
+              <!-- Badges grid -->
+              <div class="badges-grid" id="badges-grid-container">
+                <!-- Badges dynamically injected -->
+              </div>
+            </section>
+
+            <!-- Current Goals Card -->
+            <section class="glass-panel goals-card animate-slide-up" style="animation-delay: 0.14s;" aria-label="Current Goals Progression">
+              <h2 class="panel-subtitle-glow"><span aria-hidden="true">🎯</span> Current Goals</h2>
+              
+              <div class="goals-list">
+                <!-- Goal Item: Active Challenge Progress -->
+                <div class="goal-item" id="goal-item-challenge" style="display: none;">
+                  <div class="goal-header">
+                    <span class="goal-label">Mission: <strong id="goal-challenge-title">--</strong></span>
+                    <span class="goal-val" id="goal-challenge-text">--</span>
+                  </div>
+                  <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" id="goal-challenge-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Goal Item: XP to Next Level -->
+                <div class="goal-item">
+                  <div class="goal-header">
+                    <span class="goal-label">Rank Level Up Progress</span>
+                    <span class="goal-val" id="goal-xp-text">--</span>
+                  </div>
+                  <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" id="goal-xp-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
+
+                <!-- Goal Item: Next Badge Progress -->
+                <div class="goal-item" id="goal-item-badge">
+                  <div class="goal-header">
+                    <span class="goal-label">Next Target: <strong id="goal-badge-name">--</strong></span>
+                    <span class="goal-val" id="goal-badge-desc">--</span>
+                  </div>
+                  <div class="progress-track" aria-hidden="true">
+                    <div class="progress-fill" id="goal-badge-fill" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- Sustainability Journey Timeline -->
+            <section class="glass-panel journey-timeline-card animate-slide-up" style="animation-delay: 0.16s;" aria-label="Sustainability Journey Timeline">
+              <h2 class="panel-subtitle-glow" style="margin-bottom: 24px;"><span aria-hidden="true">📅</span> Sustainability Journey</h2>
+              
+              <div class="vertical-timeline" id="journey-timeline-container">
+                <!-- Timeline items dynamically injected -->
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Badge Details Pop-up Dialog Modal -->
+  <dialog id="badge-modal" class="glass-panel badge-detail-modal">
+    <button class="modal-close-btn" id="badge-modal-close" aria-label="Close dialog">&times;</button>
+    <div class="modal-content-inner">
+      <div class="modal-badge-icon-wrap">
+        <div class="modal-badge-icon" id="modal-badge-icon" aria-hidden="true">🧭</div>
+      </div>
+      <h3 class="modal-badge-name" id="modal-badge-name">First Steps</h3>
+      <span class="modal-badge-rarity" id="modal-badge-rarity">Common</span>
+      <hr class="modal-divider">
+      <p class="modal-badge-desc" id="modal-badge-desc">Unlock details here.</p>
+      
+      <!-- XP Reward Section -->
+      <div class="modal-badge-xp-reward" id="modal-badge-xp-reward-box">
+        <span class="xp-reward-label">Reward:</span>
+        <span class="xp-reward-val" id="modal-badge-xp-val">+100 XP</span>
+      </div>
+
+      <!-- Locked Badge Progress Section -->
+      <div class="modal-badge-progress-box" id="modal-badge-progress-box" style="display: none;">
+        <div class="modal-badge-progress-header">
+          <span class="progress-label">Progress</span>
+          <span class="progress-text-val" id="modal-badge-progress-text">0 / 0</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill" id="modal-badge-progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="modal-badge-date-box" id="modal-badge-date-box" style="display: none;">
+        <span class="date-label">Earned On:</span>
+        <span class="date-val" id="modal-badge-date">--</span>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- JS Scripts -->
+  <script type="module" src="/js/pages/profile.js"></script>
+</body>
+</html>
