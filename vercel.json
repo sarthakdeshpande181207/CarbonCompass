@@ -1,0 +1,12 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/assessment", "destination": "/assessment.html" },
+    { "source": "/report", "destination": "/report.html" },
+    { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/coach", "destination": "/coach.html" },
+    { "source": "/simulator", "destination": "/simulator.html" },
+    { "source": "/challenges", "destination": "/challenges.html" },
+    { "source": "/profile", "destination": "/profile.html" }
+  ]
+}

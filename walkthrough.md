@@ -123,7 +123,7 @@ This walkthrough details the architecture, features, verification, and final UI 
 ### Automated Tests
 - Ran the Jest test suite:
   `npm test`
-- **Result**: `3 passed, 1 total` (All Carbon calculation tests pass successfully without regression).
+- **Result**: All tests pass successfully without regression.
 
 ### Manual Scenarios Verified
 1. **Unassessed Onboarding Card**: Verified that an unassessed user is not redirected, but sees a card saying "Complete your carbon assessment to unlock personalized simulations." with a functioning "Start Assessment" button.
@@ -137,3 +137,14 @@ This walkthrough details the architecture, features, verification, and final UI 
    - Navigation redirects to `/challenges` where the category's challenge is active.
    - Saved simulation log successfully displays on returning.
 6. **Responsive Stack**: Tested mobile size layouts. Sliders stack vertically, circular gauge appears above charts, and elements fit without clipping.
+
+---
+
+## 6. Clean URL Routing & Vercel Compatibility
+
+To resolve the redirect loops on localhost and ensure smooth static routing on Vercel:
+1. **Vercel Config**: Added `vercel.json` in the root setting `"cleanUrls": true` and configured explicit `rewrites` to route extensionless URL paths directly to their physical HTML files.
+2. **Router & Guard Normalize**: Restored `PATH_ASSESSMENT`, `PATH_REPORT`, and `PATH_DASHBOARD` route constants to clean paths, and updated `getNormalizedPath` to strip `.html` extensions on incoming URLs.
+3. **Menu Links**: Restored dynamic navigation items in `navbar.js` to extensionless paths.
+4. **Page Redirects**: Updated redirects in page scripts (`assessment.js`, `report.js`, `simulator.js`, `dashboard.js`) to use clean paths.
+5. **Onboarding & CTA Links**: Updated onboarding buttons in `coach.html`, `dashboard.html`, `profile.html`, `report.html`, and `simulator.html` to clean paths.

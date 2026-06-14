@@ -13,10 +13,10 @@ const PATH_DASHBOARD = '/dashboard';
 const getNormalizedPath = () => {
   let path = window.location.pathname;
   if (path.endsWith('.html')) {
-    path = path.substring(0, path.length - 5);
+    path = path.slice(0, -5);
   }
-  if (path === '/index') {
-    path = '/';
+  if (path === '/index' || path === '/index.html') {
+    return '/';
   }
   return path || '/';
 };
