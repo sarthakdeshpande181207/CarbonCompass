@@ -7,12 +7,12 @@ import { getAuth, GoogleAuthProvider, browserLocalPersistence, setPersistence } 
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyCm9nhx6TCndp_zGJ6LjfdMmYMMoIX4Rdk",
+  authDomain: "carboncompass-98daf.firebaseapp.com",
+  projectId: "carboncompass-98daf",
+  storageBucket: "carboncompass-98daf.firebasestorage.app",
+  messagingSenderId: "1040351927857",
+  appId: "1:1040351927857:web:443f1960f17e27b5bbff10"
 };
 
 const app = initializeApp(firebaseConfig);
