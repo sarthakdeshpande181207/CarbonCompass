@@ -94,8 +94,8 @@
 }
 
 .tab-btn {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-muted);
   padding: 10px 20px;
   border-radius: var(--radius-md);
@@ -103,12 +103,13 @@
   font-weight: 600;
   font-size: 0.9rem;
   transition: all var(--transition-normal);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
 }
 
 .tab-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
   color: var(--text-main);
   transform: translateY(-2px);
 }
@@ -129,13 +130,11 @@
 
 /* --- Glassmorphic Challenge Card --- */
 .challenge-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(24px) saturate(120%);
-  -webkit-backdrop-filter: blur(24px) saturate(120%);
-  box-shadow: 
-    0 10px 30px rgba(0, 0, 0, 0.3),
-    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  box-shadow: var(--glass-shadow);
   border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
@@ -147,44 +146,42 @@
 }
 
 .challenge-card:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass-bg-hover);
   transform: translateY(-6px);
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 /* Neon border styling based on difficulty */
 .challenge-card.diff-easy {
-  border-color: rgba(74, 222, 128, 0.08);
+  border-color: hsla(142, 70%, 45%, 0.08);
 }
 .challenge-card.diff-easy:hover {
-  border-color: rgba(74, 222, 128, 0.25);
+  border-color: hsla(142, 70%, 45%, 0.25);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.45),
-    0 0 25px rgba(74, 222, 128, 0.12),
+    0 0 25px hsla(142, 70%, 45%, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
 .challenge-card.diff-medium {
-  border-color: rgba(56, 189, 248, 0.08);
+  border-color: hsla(200, 85%, 55%, 0.08);
 }
 .challenge-card.diff-medium:hover {
-  border-color: rgba(56, 189, 248, 0.25);
+  border-color: hsla(200, 85%, 55%, 0.25);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.45),
-    0 0 25px rgba(56, 189, 248, 0.12),
+    0 0 25px hsla(200, 85%, 55%, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
 .challenge-card.diff-hard {
-  border-color: rgba(249, 115, 22, 0.08);
+  border-color: hsla(28, 90%, 55%, 0.08);
 }
 .challenge-card.diff-hard:hover {
-  border-color: rgba(249, 115, 22, 0.25);
+  border-color: hsla(28, 90%, 55%, 0.25);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.45),
-    0 0 25px rgba(249, 115, 22, 0.12),
+    0 0 25px hsla(28, 90%, 55%, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.08);
 }
 
@@ -268,11 +265,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   padding: 12px;
   border-radius: var(--radius-md);
   margin-top: 4px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
 }
 
 .stat-box {
@@ -433,11 +433,11 @@
 /* --- Active Challenge Showcase Panel at top --- */
 .active-showcase-panel {
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(15, 23, 42, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  box-shadow: var(--glass-shadow);
   padding: 32px;
   position: relative;
   overflow: hidden;
@@ -446,10 +446,9 @@
 
 .active-showcase-panel:hover {
   transform: translateY(-2px);
-  border-color: rgba(74, 222, 128, 0.2);
-  box-shadow: 
-    0 12px 48px rgba(0, 0, 0, 0.35),
-    0 0 25px rgba(74, 222, 128, 0.08);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .active-showcase-split {
