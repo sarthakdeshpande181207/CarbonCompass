@@ -163,11 +163,7 @@
   border: 1px solid hsla(0, 0%, 100%, 0.1);
 }
 
-.globe-core::after {
-  content: '🧭';
-  font-size: 5rem;
-  filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-}
+/* Globe Core visual representation using internal image element */
 
 @keyframes rotate {
   from { transform: rotate(0deg); }
