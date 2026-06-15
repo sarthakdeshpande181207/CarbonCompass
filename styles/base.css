@@ -19,6 +19,8 @@
   --accent-orange: hsl(28, 90%, 55%);
   --accent-red: hsl(0, 85%, 60%);
   --accent-blue: hsl(210, 90%, 50%);
+  --accent-purple: hsl(265, 90%, 65%);
+  --accent-gold: hsl(45, 90%, 55%);
   
   --text-main: hsl(0, 0%, 95%);
   --text-muted: hsl(220, 10%, 70%);
@@ -27,23 +29,107 @@
   --border-color: hsla(0, 0%, 100%, 0.08);
   --border-focus: hsl(142, 70%, 45%);
   
+  /* Typography Scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.5rem;
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
   --font-display: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 20px var(--primary-glow);
+  /* Spacing System */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 60px;
+  --spacing-4xl: 80px;
+  --spacing-5xl: 100px;
   
+  /* Radius Tokens */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 30px;
+  --radius-full: 50%;
   
+  /* Shadow System */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 24px 60px rgba(0, 0, 0, 0.7);
+  --shadow-primary: 0 0 20px var(--primary-glow);
+  --shadow-secondary: 0 0 20px var(--secondary-glow);
+  --shadow-success: 0 0 20px var(--primary-glow);
+  --shadow-warning: 0 0 20px hsla(28, 90%, 55%, 0.15);
+  --shadow-danger: 0 0 20px hsla(0, 85%, 60%, 0.15);
+  --shadow-glow: 0 0 20px var(--primary-glow);
+
+  /* Transition System */
   --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.40s cubic-bezier(0.4, 0, 0.2, 1);
-  
+  --transition-bounce: 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  /* Glassmorphism System */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-bg-hover: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-border-hover: rgba(74, 222, 128, 0.25);
+  --glass-blur: 24px;
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  --glass-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-glow), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  /* Semantic State Colors */
+  --success: var(--primary);
+  --warning: var(--accent-orange);
+  --info: var(--secondary);
+  --danger: var(--accent-red);
+
+  /* Gauge System */
+  --gauge-track-color: rgba(255, 255, 255, 0.04);
+  --gauge-fill-color: var(--primary);
+  --gauge-glow: var(--primary-glow);
+  --gauge-stroke-width: 12;
+
+  /* Badge Rarity Tokens */
+  --rarity-common: var(--primary);
+  --rarity-common-bg: rgba(74, 222, 128, 0.08);
+  --rarity-common-border: rgba(74, 222, 128, 0.2);
+  --rarity-common-glow: 0 0 15px rgba(74, 222, 128, 0.15);
+
+  --rarity-rare: var(--secondary);
+  --rarity-rare-bg: rgba(56, 189, 248, 0.08);
+  --rarity-rare-border: rgba(56, 189, 248, 0.2);
+  --rarity-rare-glow: 0 0 15px rgba(56, 189, 248, 0.15);
+
+  --rarity-epic: var(--accent-purple);
+  --rarity-epic-bg: rgba(139, 92, 246, 0.08);
+  --rarity-epic-border: rgba(139, 92, 246, 0.2);
+  --rarity-epic-glow: 0 0 15px rgba(139, 92, 246, 0.15);
+
+  --rarity-legendary: var(--accent-gold);
+  --rarity-legendary-bg: rgba(245, 158, 11, 0.08);
+  --rarity-legendary-border: rgba(245, 158, 11, 0.2);
+  --rarity-legendary-glow: 0 0 15px rgba(245, 158, 11, 0.15);
+
   --max-width: 1200px;
 }
 

@@ -148,3 +148,16 @@ To resolve the redirect loops on localhost and ensure smooth static routing on V
 3. **Menu Links**: Restored dynamic navigation items in `navbar.js` to extensionless paths.
 4. **Page Redirects**: Updated redirects in page scripts (`assessment.js`, `report.js`, `simulator.js`, `dashboard.js`) to use clean paths.
 5. **Onboarding & CTA Links**: Updated onboarding buttons in `coach.html`, `dashboard.html`, `profile.html`, `report.html`, and `simulator.html` to clean paths.
+
+---
+
+## 7. Phase 2A: Base Design Token System
+
+To support visual redesigns and establish consistency across components, the `:root` pseudo-class in `base.css` has been updated with a complete design token system:
+1. **Typography**: Added `--text-xs` through `--text-6xl` sizes and weights from `--font-weight-light` (300) to `--font-weight-extrabold` (800).
+2. **Spacing**: Created a standardized scale from `--spacing-xs` (4px) to `--spacing-5xl` (100px).
+3. **Radius & Transitions**: Added `--radius-full` (50%) and standard transition timing curves, including a dynamic cubic-bezier bounce: `--transition-bounce`.
+4. **Shadows & Glows**: Standardized blur shadows and glows for primary, secondary, and semantic accents.
+5. **Glassmorphism**: Standardized background opacities, border opacities, glass blurs, and elevations for reusable glass cards and panels.
+6. **Semantic Colors**: Linked `--success`, `--warning`, `--info`, and `--danger` to standard theme variables.
+7. **Gauges & Rarities**: Defined stroke widths, colors, and dasharrays for gauges; mapped Common, Rare, Epic, and Legendary colors/glows for achievement badges.
