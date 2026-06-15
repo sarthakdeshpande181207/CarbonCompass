@@ -13,7 +13,7 @@ export const initNavbar = (activePage = '') => {
     <nav class="navbar">
       <div class="container navbar-container">
         <a href="/" class="brand">
-          <img src="/assets/logo.png" alt="Carbon Compass Logo" style="height: 32px; width: auto; object-fit: contain; display: block;">
+          <img src="/assets/logo.png" alt="Carbon Compass Logo" style="height: 32px; width: auto; object-fit: contain; display: block; border-radius: 50%;">
           <span>Carbon Compass</span>
         </a>
         <button class="nav-toggle" id="nav-toggle-btn" aria-expanded="false" aria-label="Toggle navigation menu">
