@@ -328,9 +328,10 @@
 }
 
 .insight-mini-card:hover {
-  border-color: hsla(200, 85%, 55%, 0.2);
+  border-color: hsla(142, 70%, 45%, 0.25);
   box-shadow: 
     0 10px 20px rgba(0, 0, 0, 0.35),
+    0 0 15px var(--primary-glow),
     inset 0 1px 1px var(--glass-border);
 }
 
@@ -423,19 +424,19 @@
   100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-/* User Bubbles - Neon Cyan */
+/* User Bubbles - Neutral Dark */
 .user-row .message-bubble {
-  background: hsla(200, 85%, 55%, 0.08);
-  border: 1px solid hsla(200, 85%, 55%, 0.2);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
   color: var(--text-main);
   border-bottom-right-radius: 4px;
-  box-shadow: 0 0 20px hsla(200, 85%, 55%, 0.03);
 }
 
-/* Coach Bubbles - Glass/Green */
+/* Coach Bubbles - Glass/Green Sage Advisor Bubble */
 .coach-row .message-bubble {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--primary);
   color: var(--text-muted);
   border-top-left-radius: 4px;
 }
@@ -603,14 +604,14 @@
   display: flex;
   gap: 16px;
   padding: 20px 32px 24px 32px;
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   align-items: center;
   flex-shrink: 0;
 }
 
 .chat-textarea {
   flex-grow: 1;
-  background-color: var(--bg-input);
+  background-color: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 12px 16px;

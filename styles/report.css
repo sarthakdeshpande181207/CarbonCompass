@@ -40,7 +40,7 @@
 
 .gauge-track {
   fill: none;
-  stroke: var(--bg-input);
+  stroke: var(--bg-tertiary);
   stroke-width: 12;
 }
 
@@ -49,6 +49,7 @@
   stroke: url(#gauge-gradient);
   stroke-width: 12;
   stroke-linecap: round;
+  filter: drop-shadow(0 0 6px var(--primary-glow));
   stroke-dasharray: 565.48; /* Circumference for r=90 */
   stroke-dashoffset: 565.48; /* Animate this offset */
   transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 1, 0.2, 1);
@@ -285,7 +286,7 @@
 
 .chart-bar-track {
   height: 10px;
-  background-color: var(--bg-input);
+  background-color: var(--bg-tertiary);
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -294,7 +295,7 @@
 .chart-bar-fill {
   height: 100%;
   width: 0%; /* Animate this */
-  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
   border-radius: var(--radius-xl);
   transition: width 1.2s cubic-bezier(0.1, 1, 0.2, 1);
 }

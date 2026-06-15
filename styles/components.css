@@ -74,7 +74,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 100%);
+  box-shadow: 0 0 8px var(--primary-glow);
   transition: width var(--transition-normal);
 }
 

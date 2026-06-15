@@ -296,6 +296,7 @@
   stroke: url(#hero-gradient);
   stroke-width: 12;
   stroke-linecap: round;
+  filter: drop-shadow(0 0 6px var(--primary-glow));
   stroke-dasharray: 439.82; /* Circumference r=70 */
   stroke-dashoffset: 439.82;
   transition: stroke-dashoffset 1.8s cubic-bezier(0.1, 1, 0.2, 1);
@@ -439,7 +440,7 @@
   height: 36px;
   border-radius: 50%;
   border: 1.5px solid var(--border-color);
-  background: var(--bg-input);
+  background: var(--bg-tertiary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -451,7 +452,7 @@
 .day-status.completed {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-color: var(--primary);
-  color: var(--bg-main);
+  color: var(--bg-primary);
   box-shadow: 0 0 15px var(--primary-glow);
   transform: scale(1.08);
 }
@@ -505,6 +506,7 @@
 .active-challenge-card {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--primary);
   border-radius: var(--radius-md);
   padding: 24px;
   margin-bottom: 24px;
@@ -557,7 +559,7 @@
 
 .challenge-progress-bar-track {
   height: 8px;
-  background-color: var(--bg-input);
+  background-color: var(--bg-tertiary);
   border-radius: var(--radius-xl);
   overflow: hidden;
   margin-bottom: 10px;
@@ -567,7 +569,7 @@
 .challenge-progress-bar-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
   border-radius: var(--radius-xl);
   transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }

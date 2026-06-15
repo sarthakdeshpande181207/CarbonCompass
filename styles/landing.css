@@ -181,7 +181,7 @@
 
 /* --- Features Section --- */
 .features-section {
-  background-color: var(--bg-card);
+  background-color: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }

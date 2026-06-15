@@ -212,9 +212,9 @@
 
 .hero-floating-particles .p1 { left: 10%; width: 6px; height: 6px; --drift-x: 25px; animation-duration: 9s; animation-delay: 0s; }
 .hero-floating-particles .p2 { left: 30%; width: 4px; height: 4px; --drift-x: -15px; animation-duration: 7s; animation-delay: 2s; }
-.hero-floating-particles .p3 { left: 55%; width: 8px; height: 8px; --drift-x: 35px; animation-duration: 10s; animation-delay: 1s; }
+.hero-floating-particles .p3 { left: 55%; width: 8px; height: 8px; --drift-x: 35px; animation-duration: 10s; animation-delay: 1s; background: hsla(45, 90%, 55%, 0.25); }
 .hero-floating-particles .p4 { left: 75%; width: 5px; height: 5px; --drift-x: -25px; animation-duration: 8s; animation-delay: 4s; }
-.hero-floating-particles .p5 { left: 85%; width: 7px; height: 7px; --drift-x: 10px; animation-duration: 9s; animation-delay: 3s; }
+.hero-floating-particles .p5 { left: 85%; width: 7px; height: 7px; --drift-x: 10px; animation-duration: 9s; animation-delay: 3s; background: hsla(45, 90%, 55%, 0.25); }
 .hero-floating-particles .p6 { left: 95%; width: 4px; height: 4px; --drift-x: -5px; animation-duration: 6s; animation-delay: 5s; }
 
 .hero-top-split {
@@ -275,7 +275,7 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid var(--bg-card);
+  border: 3px solid var(--bg-secondary);
 }
 
 .hero-meta h1 {
@@ -362,7 +362,7 @@
 
 .ring-tick {
   fill: rgba(255, 255, 255, 0.15);
-  stroke: var(--bg-card);
+  stroke: var(--bg-secondary);
   stroke-width: 0.4;
   transition: fill 0.3s ease, filter 0.3s ease;
 }
@@ -529,7 +529,7 @@
 .progress-fill {
   height: 100%;
   border-radius: 4px;
-  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
   box-shadow: 0 0 10px var(--primary-glow);
   width: 0%;
   transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -790,6 +790,10 @@
 .badge-item.unlocked {
   cursor: pointer;
 }
+.badge-item.unlocked.rarity-common { border-color: var(--rarity-common-border); }
+.badge-item.unlocked.rarity-rare { border-color: var(--rarity-rare-border); }
+.badge-item.unlocked.rarity-epic { border-color: var(--rarity-epic-border); }
+.badge-item.unlocked.rarity-legendary { border-color: var(--rarity-legendary-border); }
 
 .badge-item.unlocked:hover {
   transform: translateY(-6px) scale(1.05);
@@ -1009,7 +1013,7 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--bg-card);
+  background: var(--bg-secondary);
   border: 2px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;

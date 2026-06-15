@@ -312,7 +312,7 @@
 
 .progress-track {
   height: 6px;
-  background: var(--bg-input);
+  background: var(--bg-tertiary);
   border-radius: var(--radius-xl);
   overflow: hidden;
   border: 1px solid var(--border-color);
@@ -321,7 +321,7 @@
 .progress-fill {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--primary) 100%);
   border-radius: var(--radius-xl);
   transition: width var(--transition-slow) cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -362,7 +362,7 @@
   left: 0;
   right: 0;
   background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
-  color: var(--bg-main);
+  color: var(--bg-primary);
   font-size: 0.65rem;
   font-weight: 800;
   text-align: center;
@@ -395,8 +395,9 @@
 
 /* --- Active State Overlay --- */
 .challenge-card.status-active {
-  border-color: var(--secondary) !important;
-  background: hsla(200, 85%, 55%, 0.02);
+  border-color: var(--primary) !important;
+  background: hsla(142, 70%, 45%, 0.02);
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 /* Completed Section Cards styling */

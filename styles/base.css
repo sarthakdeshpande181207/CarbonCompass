@@ -7,6 +7,10 @@
   --bg-input: hsl(220, 20%, 16%);
   --bg-glass: hsla(220, 22%, 12%, 0.7);
   
+  --bg-primary: var(--bg-main);
+  --bg-secondary: var(--bg-card);
+  --bg-tertiary: var(--bg-input);
+  
   --primary: hsl(142, 70%, 45%);
   --primary-glow: hsla(142, 70%, 45%, 0.15);
   --primary-hover: hsl(142, 70%, 53%);
