@@ -132,7 +132,7 @@
 .option-input:checked + .option-card {
   border-color: var(--primary);
   background-color: var(--primary-glow);
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.1);
+  box-shadow: 0 0 15px var(--primary-glow);
 }
 
 .option-input:checked + .option-card .option-text-content {

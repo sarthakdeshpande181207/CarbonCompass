@@ -27,8 +27,8 @@
   height: 100%;
   background: radial-gradient(
     450px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    rgba(74, 222, 128, 0.05),
-    rgba(56, 189, 248, 0.02) 50%,
+    hsla(142, 70%, 45%, 0.05),
+    hsla(200, 85%, 55%, 0.02) 50%,
     transparent 80%
   );
   z-index: 2;
@@ -328,10 +328,10 @@
 }
 
 .insight-mini-card:hover {
-  border-color: rgba(56, 189, 248, 0.2);
+  border-color: hsla(200, 85%, 55%, 0.2);
   box-shadow: 
     0 10px 20px rgba(0, 0, 0, 0.35),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    inset 0 1px 1px var(--glass-border);
 }
 
 .insight-icon {
@@ -380,7 +380,7 @@
   flex-direction: column;
   gap: 24px;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.08) transparent;
+  scrollbar-color: var(--border-color) transparent;
 }
 
 .chat-log::-webkit-scrollbar {
@@ -388,7 +388,7 @@
 }
 
 .chat-log::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--border-color);
   border-radius: var(--radius-xl);
 }
 
@@ -425,17 +425,17 @@
 
 /* User Bubbles - Neon Cyan */
 .user-row .message-bubble {
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  background: hsla(200, 85%, 55%, 0.08);
+  border: 1px solid hsla(200, 85%, 55%, 0.2);
   color: var(--text-main);
   border-bottom-right-radius: 4px;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.03);
+  box-shadow: 0 0 20px hsla(200, 85%, 55%, 0.03);
 }
 
 /* Coach Bubbles - Glass/Green */
 .coach-row .message-bubble {
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-muted);
   border-top-left-radius: 4px;
 }
@@ -474,8 +474,8 @@
 }
 
 @keyframes pulse-glow {
-  0% { transform: scale(0.95); filter: drop-shadow(0 0 2px rgba(74,222,128,0.2)); }
-  100% { transform: scale(1.08); filter: drop-shadow(0 0 10px rgba(74,222,128,0.5)); }
+  0% { transform: scale(0.95); filter: drop-shadow(0 0 2px hsla(142, 70%, 45%, 0.2)); }
+  100% { transform: scale(1.08); filter: drop-shadow(0 0 10px hsla(142, 70%, 45%, 0.5)); }
 }
 
 .celebration-info h4 {
@@ -494,7 +494,7 @@
 /* Structured response layout inside bubble */
 .rich-elements-container {
   margin-top: 6px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--glass-border);
   padding-top: 10px;
   display: flex;
   flex-direction: column;
@@ -579,8 +579,8 @@
 }
 
 .prompt-chip {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-muted);
   border-radius: var(--radius-xl);
   padding: 8px 16px;
@@ -592,8 +592,8 @@
 }
 
 .prompt-chip:hover {
-  background: rgba(56, 189, 248, 0.06);
-  border-color: rgba(56, 189, 248, 0.3);
+  background: var(--secondary-glow);
+  border-color: hsla(200, 85%, 55%, 0.3);
   color: var(--secondary);
   transform: translateY(-1px);
 }
@@ -658,9 +658,9 @@
   padding: 16px 20px;
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.01) 25%,
-    rgba(255, 255, 255, 0.03) 50%,
-    rgba(255, 255, 255, 0.01) 75%
+    transparent 25%,
+    var(--border-color) 50%,
+    transparent 75%
   );
   background-size: 200% 100%;
   animation: loading-shimmer 1.5s infinite;
@@ -669,13 +669,13 @@
 .coach-shimmer {
   border-top-left-radius: 4px;
   align-self: flex-start;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
 }
 
 .user-shimmer {
   border-bottom-right-radius: 4px;
   align-self: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
 }
 
 /* --- Responsive Media Queries --- */
@@ -719,12 +719,12 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02) 60%, rgba(56, 189, 248, 0.2));
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02) 60%, hsla(200, 85%, 55%, 0.2));
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   box-shadow: 
     0 8px 20px rgba(0, 0, 0, 0.4),
-    inset 0 0 10px rgba(74, 222, 128, 0.2);
+    inset 0 0 10px hsla(142, 70%, 45%, 0.2);
   position: relative;
   animation: buddy-float 3s ease-in-out infinite;
   transition: all var(--transition-normal);
@@ -758,8 +758,8 @@
   width: 120%;
   height: 120%;
   border-radius: 50%;
-  border: 1.5px solid rgba(56, 189, 248, 0.35);
-  box-shadow: 0 0 6px rgba(56, 189, 248, 0.15);
+  border: 1.5px solid hsla(200, 85%, 55%, 0.35);
+  box-shadow: 0 0 6px hsla(200, 85%, 55%, 0.15);
   transform: rotateX(75deg) rotateY(15deg);
   pointer-events: none;
   animation: buddy-ring-rotate 8s linear infinite;
@@ -820,14 +820,14 @@
 .sage-buddy.typing .sage-buddy-orb {
   animation: buddy-typing-shake 0.5s ease-in-out infinite;
   box-shadow: 
-    0 0 25px rgba(74, 222, 128, 0.35),
-    inset 0 0 12px rgba(74, 222, 128, 0.4);
-  border-color: rgba(74, 222, 128, 0.4);
+    0 0 25px hsla(142, 70%, 45%, 0.35),
+    inset 0 0 12px hsla(142, 70%, 45%, 0.4);
+  border-color: hsla(142, 70%, 45%, 0.4);
 }
 .sage-buddy.typing .sage-buddy-core {
-  background: radial-gradient(circle, #a855f7 0%, var(--primary) 100%);
+  background: radial-gradient(circle, var(--accent-purple) 0%, var(--primary) 100%);
   box-shadow: 
-    0 0 12px rgba(168, 85, 247, 0.6),
+    0 0 12px hsla(265, 90%, 65%, 0.6),
     0 0 20px var(--primary-glow);
 }
 
@@ -854,19 +854,19 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  color: #fbbf24;
+  color: var(--accent-gold);
   font-size: 0.95rem;
   pointer-events: none;
   z-index: 10;
-  text-shadow: 0 0 4px rgba(251, 191, 36, 0.4);
+  text-shadow: 0 0 4px hsla(45, 90%, 55%, 0.4);
   animation: sparkle-shoot 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Celebration Message Bubble - Gold Glow Border */
 .coach-row .message-bubble.celebration-bubble {
-  background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%);
-  border: 1.5px solid rgba(234, 179, 8, 0.35);
-  box-shadow: 0 0 20px rgba(234, 179, 8, 0.08);
+  background: linear-gradient(135deg, hsla(45, 90%, 55%, 0.08) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1.5px solid hsla(45, 90%, 55%, 0.35);
+  box-shadow: 0 0 20px hsla(45, 90%, 55%, 0.08);
   color: var(--text-main);
 }
 
@@ -893,9 +893,9 @@
 }
 
 @keyframes buddy-message-pulse {
-  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); transform: scale(1); }
+  0% { box-shadow: 0 0 0 0 hsla(142, 70%, 45%, 0.6); transform: scale(1); }
   50% { transform: scale(1.22); }
-  100% { box-shadow: 0 0 0 20px rgba(74, 222, 128, 0); transform: scale(1); }
+  100% { box-shadow: 0 0 0 20px hsla(142, 70%, 45%, 0); transform: scale(1); }
 }
 
 @keyframes buddy-greet-wave {

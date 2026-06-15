@@ -27,8 +27,8 @@
   height: 100%;
   background: radial-gradient(
     450px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    rgba(74, 222, 128, 0.05),
-    rgba(56, 189, 248, 0.02) 50%,
+    hsla(142, 70%, 45%, 0.05),
+    hsla(200, 85%, 55%, 0.02) 50%,
     transparent 80%
   );
   z-index: 2;
@@ -287,7 +287,7 @@
 
 .hero-score-track {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.04);
+  stroke: var(--gauge-track-color);
   stroke-width: 12;
 }
 
@@ -392,7 +392,7 @@
   font-size: 1.8rem;
   font-weight: 800;
   color: var(--accent-orange);
-  text-shadow: 0 0 10px rgba(249, 115, 22, 0.15);
+  text-shadow: 0 0 10px hsla(28, 90%, 55%, 0.15);
 }
 
 .streak-label {
@@ -452,7 +452,7 @@
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   border-color: var(--primary);
   color: var(--bg-main);
-  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 15px var(--primary-glow);
   transform: scale(1.08);
 }
 
@@ -633,7 +633,7 @@
 }
 
 .badge-item.earned .badge-glass-circle {
-  background: linear-gradient(135deg, rgba(74, 222, 128, 0.1) 0%, rgba(56, 189, 248, 0.1) 100%);
+  background: linear-gradient(135deg, hsla(142, 70%, 45%, 0.1) 0%, hsla(200, 85%, 55%, 0.1) 100%);
   border-color: var(--primary);
   box-shadow: 0 0 10px var(--primary-glow);
 }
@@ -642,8 +642,8 @@
   border-color: var(--primary);
   box-shadow: 
     0 15px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(74, 222, 128, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    0 0 20px hsla(142, 70%, 45%, 0.25),
+    inset 0 1px 1px var(--glass-border);
 }
 
 /* Locked / Frosted Glass State */
@@ -696,7 +696,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at top left, rgba(74, 222, 128, 0.05) 0%, transparent 60%);
+  background: radial-gradient(circle at top left, hsla(142, 70%, 45%, 0.05) 0%, transparent 60%);
   opacity: 0;
   transition: opacity var(--transition-normal);
   pointer-events: none;
@@ -707,19 +707,19 @@
 }
 
 .action-card:hover {
-  border-color: rgba(56, 189, 248, 0.3) !important; /* Blue glow */
+  border-color: hsla(200, 85%, 55%, 0.3) !important; /* Blue glow */
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 25px rgba(56, 189, 248, 0.12),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08) !important;
+    0 0 25px hsla(200, 85%, 55%, 0.12),
+    inset 0 1px 1px var(--glass-border) !important;
 }
 
 .action-icon-wrap {
   width: 56px;
   height: 56px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -750,9 +750,9 @@
 .shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.01) 25%,
-    rgba(255, 255, 255, 0.06) 50%,
-    rgba(255, 255, 255, 0.01) 75%
+    transparent 25%,
+    var(--border-color) 50%,
+    transparent 75%
   );
   background-size: 200% 100%;
   animation: loading-shimmer 1.5s infinite;
@@ -765,24 +765,23 @@
 
 .skeleton-text {
   height: 14px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+  background-color: var(--glass-bg-hover);
+  border-radius: var(--radius-sm);
   margin-bottom: 12px;
 }
 
 .skeleton-title {
   height: 20px;
-  background-color: rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
+  background-color: var(--glass-border);
+  border-radius: var(--radius-sm);
   margin-bottom: 20px;
-  width: 60%;
 }
 
 .skeleton-circle {
   width: 140px;
   height: 140px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-full);
+  background-color: var(--glass-bg-hover);
   margin: 0 auto 24px auto;
 }
 

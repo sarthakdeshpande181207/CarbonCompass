@@ -27,8 +27,8 @@
   height: 100%;
   background: radial-gradient(
     450px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    rgba(74, 222, 128, 0.05),
-    rgba(56, 189, 248, 0.02) 50%,
+    hsla(142, 70%, 45%, 0.05),
+    hsla(200, 85%, 55%, 0.02) 50%,
     transparent 80%
   );
   z-index: 2;
@@ -107,7 +107,7 @@
 .onboarding-title {
   font-size: 2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #fff 30%, var(--text-muted) 100%);
+  background: linear-gradient(135deg, white 30%, var(--text-muted) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -141,7 +141,7 @@
 .hero-title {
   font-size: 2.2rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #fff 40%, var(--text-dim) 100%);
+  background: linear-gradient(135deg, white 40%, var(--text-dim) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
@@ -223,7 +223,7 @@
   font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-main);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 12px;
   margin-bottom: 20px;
   display: flex;
@@ -249,8 +249,8 @@
 }
 
 .preset-btn {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   color: var(--text-muted);
   padding: 12px;
@@ -262,12 +262,13 @@
   justify-content: center;
   gap: 8px;
   transition: all var(--transition-normal);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--glass-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(120%);
 }
 
 .preset-btn:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
   color: var(--text-main);
   transform: translateY(-2px);
 }
@@ -277,7 +278,7 @@
   border-color: var(--primary);
   color: var(--primary);
   box-shadow: 0 0 15px var(--primary-glow);
-  text-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  text-shadow: 0 0 8px hsla(142, 70%, 45%, 0.5);
 }
 
 .preset-emoji {
@@ -305,7 +306,7 @@
   flex-direction: column;
   gap: 10px;
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-color);
   transition: all var(--transition-fast);
 }
 
@@ -320,8 +321,8 @@
 }
 
 .slider-group:hover .slider-label {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+  color: var(--text-main);
+  text-shadow: 0 0 8px hsla(0, 0%, 100%, 0.25);
 }
 
 .slider-group:hover .slider-input::-webkit-slider-thumb {
@@ -356,7 +357,7 @@
   background: var(--secondary-glow);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  border: 1px solid hsla(200, 85%, 55%, 0.15);
 }
 
 .slider-track-wrap {
@@ -372,7 +373,7 @@
   width: 100%;
   height: 6px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-border);
   outline: none;
   transition: background 0.3s;
 }
@@ -387,7 +388,7 @@
   cursor: pointer;
   box-shadow: 0 0 8px var(--secondary);
   transition: transform 0.1s, box-shadow 0.2s;
-  border: 2px solid #fff;
+  border: 2px solid white;
 }
 
 .slider-input::-webkit-slider-thumb:hover {
@@ -403,7 +404,7 @@
   cursor: pointer;
   box-shadow: 0 0 8px var(--secondary);
   transition: transform 0.1s, box-shadow 0.2s;
-  border: 2px solid #fff;
+  border: 2px solid white;
 }
 
 .slider-input::-moz-range-thumb:hover {
@@ -466,7 +467,7 @@
 
 .projection-gauge-container .hero-score-track {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.04);
+  stroke: var(--gauge-track-color);
   stroke-width: 10;
 }
 
@@ -492,7 +493,7 @@
 .projection-gauge-container .hero-score-num {
   font-size: 2.4rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text-main);
   line-height: 1;
 }
 
@@ -505,8 +506,8 @@
 }
 
 .projection-summary-pill {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   padding: 6px 16px;
   border-radius: 20px;
   font-size: 0.85rem;
@@ -514,7 +515,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 var(--glass-border);
 }
 
 /* --- Category Emissions Comparison --- */
@@ -561,7 +562,7 @@
 .comparison-visual-track {
   width: 100%;
   height: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -569,7 +570,7 @@
   flex-direction: column;
   gap: 2px;
   padding: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
 }
 
 .comparison-bar {
@@ -579,7 +580,7 @@
 }
 
 .comparison-bar.current {
-  background: linear-gradient(90deg, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.7) 100%);
+  background: linear-gradient(90deg, hsla(0, 85%, 60%, 0.4) 0%, hsla(0, 85%, 60%, 0.7) 100%);
   height: 5px;
 }
 
@@ -607,7 +608,7 @@
 
 .stat-card:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--glass-bg-hover);
 }
 
 .stat-card-icon {
@@ -623,7 +624,7 @@
 .stat-card-val {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--text-main);
 }
 
 .stat-card-label {
@@ -662,9 +663,9 @@
 .rec-icon {
   font-size: 2rem;
   padding: 8px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
 }
 
 .rec-details {
@@ -739,16 +740,16 @@
   gap: 20px;
   box-shadow: 
     0 10px 30px rgba(0, 0, 0, 0.4),
-    0 0 25px rgba(56, 189, 248, 0.04),
-    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    0 0 25px hsla(200, 85%, 55%, 0.04),
+    inset 0 1px 1px var(--glass-border);
 }
 
 .commit-section-wrapper .action-commit-card:hover {
-  border-color: rgba(56, 189, 248, 0.25);
+  border-color: hsla(200, 85%, 55%, 0.25);
   box-shadow: 
     0 20px 40px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(56, 189, 248, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+    0 0 30px hsla(200, 85%, 55%, 0.15),
+    inset 0 1px 1px var(--glass-border);
 }
 
 .committed-history-box {
@@ -813,7 +814,7 @@
   align-items: flex-start;
   gap: 10px;
   background: var(--secondary-glow);
-  border: 1px solid rgba(56, 189, 248, 0.2);
+  border: 1px solid hsla(200, 85%, 55%, 0.2);
   border-radius: var(--radius-md);
   padding: 12px 18px;
   animation: pulse-border 2s infinite alternate;
@@ -822,8 +823,8 @@
 }
 
 @keyframes pulse-border {
-  0% { border-color: rgba(56, 189, 248, 0.2); }
-  100% { border-color: rgba(56, 189, 248, 0.6); }
+  0% { border-color: hsla(200, 85%, 55%, 0.2); }
+  100% { border-color: hsla(200, 85%, 55%, 0.6); }
 }
 
 .badge-status-alert .alert-icon {
