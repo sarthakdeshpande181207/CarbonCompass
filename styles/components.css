@@ -12,10 +12,17 @@
 
 /* --- Navigation Bar --- */
 .navbar {
-  background: var(--bg-glass);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  border-bottom: 1px solid var(--border-color);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 1px 0 rgba(16, 185, 129, 0.08),
+    0 10px 40px rgba(16, 185, 129, 0.04);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.10);
   position: sticky;
   top: 0;
   z-index: 50;
@@ -39,12 +46,35 @@
   font-size: var(--text-2xl);
   font-weight: var(--font-weight-extrabold);
   color: var(--text-main);
+  transition: filter 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.brand:hover {
+  filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.25));
+  transform: translateY(-0.5px);
+}
+
+.brand img {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.brand:hover img {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
 }
 
 .brand span:last-child {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(
+    90deg,
+    #22c55e 0%,
+    #34d399 40%,
+    #38bdf8 100%
+  );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 12px rgba(34, 197, 94, 0.15);
 }
 
 .nav-links {
@@ -209,7 +239,7 @@
 }
 
 .card-primary:hover::before {
-  background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-hover) 100%);
 }
 
 /* --- Form Elements --- */
@@ -315,7 +345,7 @@
   height: 40px;
   border-radius: var(--radius-full);
   padding: 2px;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
   display: flex;
   align-items: center;
   justify-content: center;

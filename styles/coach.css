@@ -27,8 +27,8 @@
   height: 100%;
   background: radial-gradient(
     450px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    hsla(142, 70%, 45%, 0.05),
-    hsla(200, 85%, 55%, 0.02) 50%,
+    hsla(142, 70%, 45%, 0.04),
+    hsla(42, 90%, 55%, 0.01) 50%,
     transparent 80%
   );
   z-index: 2;
@@ -42,10 +42,10 @@
   position: absolute;
   top: 10%;
   left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-  filter: blur(120px);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, hsla(142, 70%, 45%, 0.04) 0%, transparent 70%);
+  filter: blur(180px);
   pointer-events: none;
   z-index: 2;
   animation: blob-float-1 25s ease-in-out infinite alternate;
@@ -55,10 +55,10 @@
   position: absolute;
   bottom: 15%;
   right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--secondary-glow) 0%, transparent 70%);
-  filter: blur(120px);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, hsla(42, 90%, 55%, 0.03) 0%, transparent 70%);
+  filter: blur(200px);
   pointer-events: none;
   z-index: 2;
   animation: blob-float-2 30s ease-in-out infinite alternate;
@@ -457,7 +457,7 @@
 
 /* Celebration card inside chat feed */
 .celebration-card {
-  background: linear-gradient(135deg, hsla(142, 70%, 45%, 0.1) 0%, hsla(200, 85%, 55%, 0.05) 100%);
+  background: linear-gradient(135deg, hsla(142, 70%, 45%, 0.1) 0%, hsla(142, 70%, 45%, 0.02) 100%);
   border: 1px solid hsla(142, 70%, 45%, 0.25);
   border-radius: 20px;
   padding: 16px 24px;
@@ -593,9 +593,9 @@
 }
 
 .prompt-chip:hover {
-  background: var(--secondary-glow);
-  border-color: hsla(200, 85%, 55%, 0.3);
-  color: var(--secondary);
+  background: var(--primary-glow);
+  border-color: hsla(142, 70%, 45%, 0.3);
+  color: var(--primary);
   transform: translateY(-1px);
 }
 
@@ -720,7 +720,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02) 60%, hsla(200, 85%, 55%, 0.2));
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.02) 60%, hsla(142, 70%, 45%, 0.1));
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(4px);
   box-shadow: 
@@ -742,10 +742,10 @@
   width: 40%;
   height: 40%;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--primary) 0%, var(--secondary) 100%);
+  background: radial-gradient(circle, var(--primary) 0%, var(--primary-hover) 100%);
   box-shadow: 
     0 0 10px var(--primary-glow),
-    0 0 18px var(--secondary-glow);
+    0 0 18px var(--primary-glow);
   filter: blur(0.5px);
   animation: buddy-core-glow 2s ease-in-out infinite alternate;
   transition: background var(--transition-normal), box-shadow var(--transition-normal);
@@ -759,8 +759,8 @@
   width: 120%;
   height: 120%;
   border-radius: 50%;
-  border: 1.5px solid hsla(200, 85%, 55%, 0.35);
-  box-shadow: 0 0 6px hsla(200, 85%, 55%, 0.15);
+  border: 1.5px solid hsla(142, 70%, 45%, 0.35);
+  box-shadow: 0 0 6px hsla(142, 70%, 45%, 0.15);
   transform: rotateX(75deg) rotateY(15deg);
   pointer-events: none;
   animation: buddy-ring-rotate 8s linear infinite;

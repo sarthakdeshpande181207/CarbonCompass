@@ -110,6 +110,39 @@
   align-items: center;
 }
 
+/* Faint particle/light haze effect around the outer edge */
+.globe-container::before {
+  content: '';
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.12) 0%, transparent 10%),
+    radial-gradient(circle at 75% 35%, rgba(6, 182, 212, 0.15) 0%, transparent 12%),
+    radial-gradient(circle at 35% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 14%),
+    radial-gradient(circle at 80% 70%, rgba(34, 197, 94, 0.12) 0%, transparent 10%),
+    radial-gradient(circle at 50% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 8%);
+  filter: blur(8px);
+  z-index: 1;
+  animation: rotate 25s linear infinite;
+  pointer-events: none;
+}
+
+/* Subtle third rotating energy ring */
+.globe-container::after {
+  content: '';
+  position: absolute;
+  width: 91%;
+  height: 91%;
+  border: 1px dotted rgba(16, 185, 129, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.08);
+  animation: rotate 18s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
 @media (max-width: 576px) {
   .globe-container {
     width: 280px;
@@ -117,53 +150,87 @@
   }
 }
 
-/* Glassmorphic backdrop glow */
+/* Layered radial glows fading naturally into the background */
 .globe-glow {
   position: absolute;
-  width: 90%;
-  height: 90%;
+  width: 110%;
+  height: 110%;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
-  filter: blur(20px);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%);
+  filter: blur(35px);
   z-index: 1;
+  animation: globe-breath 7s ease-in-out infinite;
 }
 
+.globe-glow::before {
+  content: '';
+  position: absolute;
+  top: -10%; left: -10%; right: -10%; bottom: -10%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.12) 0%, rgba(16, 185, 129, 0.04) 60%, transparent 80%);
+  filter: blur(25px);
+}
+
+.globe-glow::after {
+  content: '';
+  position: absolute;
+  top: 5%; left: 5%; right: 5%; bottom: 5%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, rgba(34, 197, 94, 0.02) 50%, transparent 70%);
+  filter: blur(40px);
+}
+
+/* Rotating outer energy ring with cyan accent */
 .globe-outer-ring {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 1px dashed hsla(142, 70%, 45%, 0.25);
+  border: 1.5px dashed rgba(6, 182, 212, 0.4);
   border-radius: 50%;
-  animation: rotate 30s linear infinite;
+  box-shadow: 
+    0 0 15px rgba(6, 182, 212, 0.2), 
+    inset 0 0 15px rgba(6, 182, 212, 0.15);
+  animation: rotate 35s linear infinite;
   z-index: 2;
 }
 
+/* Rotating inner energy ring with green colors */
 .globe-inner-ring {
   position: absolute;
-  width: 80%;
-  height: 80%;
-  border: 1px solid hsla(200, 85%, 55%, 0.15);
+  width: 82%;
+  height: 82%;
+  border: 1.5px solid rgba(34, 197, 94, 0.25);
+  border-left-color: rgba(6, 182, 212, 0.6);
+  border-right-color: rgba(16, 185, 129, 0.6);
   border-radius: 50%;
-  animation: rotate-reverse 20s linear infinite;
+  box-shadow: 
+    0 0 20px rgba(16, 185, 129, 0.25),
+    inset 0 0 10px rgba(34, 197, 94, 0.1);
+  animation: rotate-reverse 24s linear infinite;
   z-index: 2;
 }
 
+/* Globe core - 3D depth, soft inner glow, active indicator green outer ring */
 .globe-core {
   width: 60%;
   height: 60%;
   border-radius: 50%;
-  background: linear-gradient(135deg, hsl(142, 60%, 25%) 0%, hsl(200, 70%, 20%) 100%);
-  box-shadow: inset -20px -20px 50px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+  background: linear-gradient(135deg, #092c1a 0%, #080808 100%);
+  box-shadow: 
+    inset 0 0 25px rgba(34, 197, 94, 0.3),
+    inset -10px -10px 35px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(34, 197, 94, 0.35),
+    0 0 50px rgba(16, 185, 129, 0.15),
+    0 0 80px rgba(6, 182, 212, 0.1);
   z-index: 3;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border: 2.5px solid rgba(34, 197, 94, 0.65);
+  animation: core-glow-breath 7s ease-in-out infinite;
 }
-
-/* Globe Core visual representation using internal image element */
 
 @keyframes rotate {
   from { transform: rotate(0deg); }
@@ -173,6 +240,40 @@
 @keyframes rotate-reverse {
   from { transform: rotate(360deg); }
   to { transform: rotate(0deg); }
+}
+
+@keyframes globe-breath {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+    filter: blur(35px);
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: blur(42px);
+  }
+}
+
+@keyframes core-glow-breath {
+  0%, 100% {
+    box-shadow: 
+      inset 0 0 25px rgba(34, 197, 94, 0.3),
+      inset -10px -10px 35px rgba(0, 0, 0, 0.9),
+      0 0 25px rgba(34, 197, 94, 0.35),
+      0 0 50px rgba(16, 185, 129, 0.15),
+      0 0 80px rgba(6, 182, 212, 0.1);
+    border-color: rgba(34, 197, 94, 0.6);
+  }
+  50% {
+    box-shadow: 
+      inset 0 0 35px rgba(34, 197, 94, 0.45),
+      inset -10px -10px 35px rgba(0, 0, 0, 0.9),
+      0 0 40px rgba(34, 197, 94, 0.55),
+      0 0 75px rgba(16, 185, 129, 0.3),
+      0 0 110px rgba(6, 182, 212, 0.25);
+    border-color: rgba(34, 197, 94, 0.85);
+  }
 }
 
 /* --- Features Section --- */

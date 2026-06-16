@@ -83,7 +83,7 @@ function triggerBurstAtScoreRing() {
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 4 + 1.5;
-    const isCyan = Math.random() > 0.5;
+    const isGold = Math.random() < 0.2;
 
     burstParticles.push({
       x: centerX + window.scrollX,
@@ -91,7 +91,7 @@ function triggerBurstAtScoreRing() {
       r: Math.random() * 3.5 + 1.5,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      color: isCyan ? '56, 189, 248' : '74, 222, 128',
+      color: isGold ? '251, 191, 36' : '74, 222, 128',
       opacity: Math.random() * 0.6 + 0.4
     });
   }
@@ -488,16 +488,18 @@ function initParticlesBackground() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Create background floating nodes (standard particles)
+  // Create background floating nodes (80% emerald, 20% gold)
   const maxBgParticles = Math.min(30, Math.floor(window.innerWidth / 40));
   for (let i = 0; i < maxBgParticles; i++) {
+    const isGold = Math.random() < 0.2;
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 1.5 + 0.5,
       speedY: -(Math.random() * 0.3 + 0.1),
-      opacity: Math.random() * 0.10 + 0.02,
-      isGlass: false
+      opacity: (Math.random() * 0.10 + 0.02) * 0.8,
+      isGlass: false,
+      color: isGold ? '251, 191, 36' : '74, 222, 128'
     });
   }
 
@@ -507,9 +509,9 @@ function initParticlesBackground() {
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      r: Math.random() * 20 + 12, // larger size
-      speedY: -(Math.random() * 0.08 + 0.03), // extremely slow
-      opacity: Math.random() * 0.02 + 0.01, // barely visible
+      r: Math.random() * 20 + 12,
+      speedY: -(Math.random() * 0.08 + 0.03),
+      opacity: (Math.random() * 0.02 + 0.01) * 0.8,
       isGlass: true,
       driftX: Math.sin(Math.random() * Math.PI) * 0.1
     });
@@ -518,6 +520,27 @@ function initParticlesBackground() {
   // Particle loop
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw connection lines (reduced intensity by 20%)
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const p1 = particles[i];
+        const p2 = particles[j];
+        if (p1.isGlass || p2.isGlass) continue;
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          const lineAlpha = (1 - dist / 100) * 0.096;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${lineAlpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
 
     particles.forEach(p => {
       ctx.beginPath();
@@ -530,8 +553,8 @@ function initParticlesBackground() {
         ctx.shadowBlur = 10;
         p.x += p.driftX;
       } else {
-        // Small neon green nodes
-        ctx.fillStyle = `rgba(74, 222, 128, ${p.opacity})`;
+        // Small green/gold nodes
+        ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
         ctx.shadowBlur = 0;
       }
       ctx.fill();

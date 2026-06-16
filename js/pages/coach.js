@@ -91,28 +91,49 @@ function initParticlesBackground() {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
   
-  // Seed particles
+  // Seed particles (80% emerald, 20% gold)
   const particleCount = 20;
   for (let i = 0; i < particleCount; i++) {
+    const isGold = Math.random() < 0.2;
     particles.push({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 2 + 1,
       vx: (Math.random() - 0.5) * 0.4,
       vy: (Math.random() - 0.5) * 0.4,
-      opacity: Math.random() * 0.4 + 0.1
+      opacity: (Math.random() * 0.4 + 0.1) * 0.8,
+      color: isGold ? '251, 191, 36' : '74, 222, 128'
     });
   }
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+    // Draw connection lines (reduced intensity by 20%)
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const p1 = particles[i];
+        const p2 = particles[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          const lineAlpha = (1 - dist / 100) * 0.096;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${lineAlpha})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+
     // Draw background floaters
-    ctx.fillStyle = 'rgba(74, 222, 128, 0.3)';
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(74, 222, 128, ${p.opacity})`;
+      ctx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
       ctx.fill();
       
       p.x += p.vx;
@@ -161,7 +182,7 @@ function triggerExplosionAtElement(elementId) {
   for (let i = 0; i < count; i++) {
     const angle = Math.random() * Math.PI * 2;
     const speed = Math.random() * 4.5 + 1.5;
-    const isCyan = Math.random() > 0.5;
+    const isGold = Math.random() < 0.2;
     
     burstParticles.push({
       x: centerX + window.scrollX,
@@ -169,7 +190,7 @@ function triggerExplosionAtElement(elementId) {
       r: Math.random() * 3.5 + 1.5,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      color: isCyan ? '56, 189, 248' : '74, 222, 128',
+      color: isGold ? '251, 191, 36' : '74, 222, 128',
       opacity: Math.random() * 0.7 + 0.3
     });
   }
