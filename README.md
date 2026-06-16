@@ -1,460 +1,476 @@
-# 🧭 Carbon Compass
+# 🌍 Carbon Compass
 
-> Transforming sustainability into a journey, not a calculation.
+<div align="center">
 
-Carbon Compass is a next-generation sustainability platform that helps users understand, track, improve, and simulate their environmental impact through a personalized and gamified experience.
+### Track. Understand. Improve. Your Environmental Impact.
 
-Built with a modern glassmorphism interface, Firebase integration, AI-powered coaching, challenges, streaks, achievements, and carbon impact simulations, Carbon Compass aims to make sustainable living engaging, measurable, and rewarding.
+Carbon Compass is a full-stack sustainability platform that helps users measure, understand, and reduce their carbon footprint through personalized insights, AI-powered coaching, interactive simulations, gamified challenges, and progress tracking.
+
+Built to transform sustainability from a one-time assessment into an engaging long-term journey.
 
 ---
 
-## 🌍 Vision
+🌱 Sustainability • 🤖 AI Guidance • 🏆 Gamification • 📊 Analytics • 🚀 Real Impact
 
-Most carbon calculators provide a score and stop there.
+</div>
 
-Carbon Compass goes beyond measurement by helping users:
+---
 
-* Understand their environmental footprint
-* Track long-term sustainability progress
-* Complete eco-friendly challenges
-* Build streaks and habits
-* Earn achievements
-* Receive personalized coaching
-* Simulate future lifestyle decisions
-* Visualize real-world impact
+## 📖 Overview
 
-The goal is to transform sustainability from a one-time calculation into a continuous journey.
+Carbon Compass empowers users to understand their environmental impact through an intelligent and engaging ecosystem of tools.
+
+Instead of simply displaying a carbon footprint score, Carbon Compass guides users through a complete sustainability journey:
+
+- Assess environmental habits
+- Receive a personalized Planet Health Score
+- Discover sustainability strengths and weaknesses
+- Simulate lifestyle changes
+- Complete eco-friendly challenges
+- Earn XP, badges, and achievements
+- Receive AI-powered sustainability coaching
+- Track long-term progress
+
+The result is a platform that turns sustainability awareness into actionable behavior change.
 
 ---
 
 # ✨ Features
 
-## 📋 Carbon Footprint Assessment
+## 📊 Carbon Footprint Assessment
 
-Interactive sustainability assessment that evaluates:
+A personalized environmental impact questionnaire that evaluates key lifestyle categories.
 
-* Transportation habits
-* Energy consumption
-* Dietary choices
-* Shopping & waste practices
-* Travel behavior
+### Includes
+- Transport habits
+- Energy consumption
+- Food choices
+- Consumption patterns
+- Waste management
 
-After completion, users receive:
-
-* Planet Health Score
-* Sustainability Archetype
-* Category breakdown
-* Personalized recommendations
-
----
-
-## 📊 Sustainability Dashboard
-
-A personalized command center displaying:
-
-### Overview Metrics
-
-* Planet Health Score
-* Current Level
-* Total XP
-* Streak Count
-* Active Challenge
-* Badges Earned
-
-### Visual Elements
-
-* Glassmorphism cards
-* Dynamic statistics
-* Animated counters
-* Progress tracking
-* Particle backgrounds
-* Responsive layouts
+### Results
+- Planet Health Score
+- Sustainability Archetype
+- Carbon category breakdown
+- Personalized recommendations
 
 ---
 
-## 🎯 Challenges Hub
+## 📄 Personalized Sustainability Report
 
-Complete real-world sustainability missions.
+After completing the assessment, users receive a detailed sustainability report.
 
-### Categories
+### Report Highlights
 
-* 🚗 Transport
-* ⚡ Energy
-* 🍽️ Diet
-* 🛍️ Shopping & Waste
-* 🤝 Community
-
-### Features
-
-* Challenge activation
-* Daily progress logging
-* XP rewards
-* Automatic completion detection
-* Dashboard synchronization
-* Challenge filtering system
-
-### Examples
-
-* Transit Day
-* Plant-Powered Weekend
-* Phantom Power Sweep
-* Second-Hand First
-* Community Cleanup
+- Overall Planet Health Score
+- Environmental strengths
+- Areas for improvement
+- Sustainability archetype
+- Category-by-category analysis
+- Actionable improvement roadmap
 
 ---
 
-## 🤖 AI Coach — Sage
+## 🏠 Smart Dashboard
 
-Meet **Sage**, your sustainability companion.
+The dashboard acts as the central hub of the platform.
+
+### Dashboard Features
+
+- Planet Health Score overview
+- XP and Level tracking
+- Sustainability streak monitoring
+- Active challenge status
+- Quick action cards
+- Progress summaries
+- Achievement highlights
+
+---
+
+## 🤖 Sage AI Sustainability Coach
+
+Meet **Sage**, Carbon Compass's AI-powered sustainability mentor.
+
+Powered by **Google Gemini**, Sage provides personalized environmental guidance based on each user's progress and carbon profile.
 
 ### Capabilities
 
-* Personalized sustainability advice
-* Context-aware recommendations
-* Challenge suggestions
-* Progress analysis
-* Habit coaching
-* Environmental education
-
-### Intelligent Context
-
-Sage understands:
-
-* Assessment results
-* Planet Health Score
-* Sustainability Archetype
-* Active Challenges
-* Streaks
-* Badges
-* XP & Level
-
-### Features
-
-* Dynamic prompt suggestions
-* Conversation memory
-* Typing indicators
-* Contextual recommendations
-* Future Gemini integration support
+- Sustainability education
+- Carbon reduction advice
+- Personalized recommendations
+- Habit improvement strategies
+- Context-aware conversations
+- Progress-based coaching
 
 ---
 
-## 💫 Sage Buddy Companion
+## 🌱 Weekly Eco Challenges
 
-Interactive assistant companion integrated into the Coach experience.
+Gamified sustainability missions designed to build long-term habits.
 
-### Behaviors
+### Challenge Categories
 
-* Floating idle animation
-* Greeting interaction
-* Typing reactions
-* Message pulse responses
-* Glass orb design
-* Dynamic speech bubbles
+- Energy Saving
+- Sustainable Transport
+- Waste Reduction
+- Conscious Consumption
+- Food Sustainability
 
----
+### Rewards
 
-## 🔮 Impact Simulator
-
-Experiment with sustainability decisions before making them.
-
-### Interactive Sliders
-
-* Transportation
-* Energy
-* Diet
-* Shopping
-* Travel
-
-### Real-Time Calculations
-
-See how lifestyle changes affect:
-
-* Planet Health Score
-* Annual CO₂ emissions
-* Carbon reductions
-* Tree equivalency
-* Environmental impact
-
-### Smart Commitments
-
-Users can:
-
-* Commit to sustainable habits
-* Trigger relevant challenges
-* Unlock achievements
-* Track future impact
+- XP Points
+- Achievement Progress
+- Streak Growth
+- Badge Unlocks
 
 ---
 
-## 🏆 Achievement System
+## 🔬 Carbon Impact Simulator
 
-Gamified progression and reward structure.
+An interactive simulator that allows users to explore the environmental consequences of lifestyle changes.
 
-### Current Achievement Set
+### Users Can Simulate
 
-* First Steps
-* Eco Explorer
-* Challenger
-* Habit Builder
-* Carbon Saver
-* Carbon Shredder
+- Reduced car usage
+- Public transportation adoption
+- Vegetarian meal frequency
+- Energy-efficient appliances
+- Renewable energy adoption
+- Sustainable shopping habits
 
-### Features
+### Benefits
 
-* Unlock tracking
-* Achievement glow effects
-* Badge showcase
-* Progress monitoring
-
----
-
-## 🔥 Streak System
-
-Encourages consistency through habit-building.
-
-Tracks:
-
-* Current streak
-* Longest streak
-* Activity history
-* Challenge participation
-
-Rewards users for maintaining momentum and sustainability habits.
+- Instant impact visualization
+- Data-driven decision making
+- Better sustainability awareness
 
 ---
 
-## 👤 Sustainability Profile Hub
+## 🏆 XP, Levels & Achievements
 
-A personalized sustainability identity dashboard.
+Carbon Compass turns sustainability into a rewarding journey.
+
+### Progression System
+
+- XP Rewards
+- User Levels
+- Achievement Badges
+- Sustainability Milestones
+- Streak Tracking
+
+### Badge Rarities
+
+- Common
+- Rare
+- Epic
+- Legendary
+
+---
+
+## 👤 Sustainability Passport
+
+A personalized profile showcasing the user's sustainability journey.
 
 ### Includes
 
-#### Profile Hero
-
-* Avatar
-* Name
-* Email
-* Level
-* XP Progression
-
-#### Sustainability Identity
-
-* Archetype
-* Strongest category
-* Focus area
-* Planet Health Score
-
-#### Achievement Showcase
-
-* Unlocked badges
-* Badge progress
-* Achievement details
-
-#### Sustainability Journey
-
-Timeline-based progress tracking including:
-
-* Assessment completion
-* Challenges completed
-* Level progression
-* Badge unlocks
-* Simulator commitments
-
-#### Lifetime Impact
-
-Tracks:
-
-* CO₂ saved
-* Trees equivalent
-* XP earned
-* Challenges completed
-* Sustainability milestones
+- Profile Overview
+- Environmental Archetype
+- XP & Level Progress
+- Achievement Collection
+- Badge Showcase
+- Progress Timeline
+- Sustainability Statistics
 
 ---
 
-# 🎨 Design System
+# 🎨 Design Philosophy
 
-Carbon Compass uses a modern sustainability-focused visual language.
+Carbon Compass is designed around a premium sustainability-focused visual identity.
 
-### Design Principles
+### Core Theme
 
-* Premium Glassmorphism
-* Dark Carbon Background
-* Environmental Aesthetics
-* Neon Sustainability Accents
-* Responsive Interfaces
-* Smooth Animations
-* Accessible Design
+🌑 **Carbon Black Foundation**
 
-### UI Features
+🌱 **Emerald Sustainability Energy**
 
-* Floating particle systems
-* Dynamic gradients
-* Animated counters
-* Glass cards
-* Hover interactions
-* Responsive layouts
+🏆 **Gold Achievement Highlights**
 
----
+### Design System
 
-# 🔐 Authentication
-
-Powered by Firebase Authentication.
-
-### Supported Features
-
-* Google Sign-In
-* Session persistence
-* Route protection
-* Secure user identification
+- Glassmorphism
+- Soft Glow Effects
+- Premium Gradients
+- Ambient Particle Systems
+- Dark Mode First
+- Responsive Layouts
+- Accessibility Focused Design
 
 ---
 
-# ☁️ Database
+# 🛠️ Tech Stack
 
-Powered by Firebase Firestore.
+## Frontend
 
-Stores:
+- HTML5
+- CSS3
+- Vanilla JavaScript (ES6 Modules)
 
-* User profiles
-* Assessment results
-* Challenges
-* Achievements
-* Streaks
-* Coach sessions
-* Sustainability progress
+## Backend
 
-Includes local storage fallback for development environments.
+- Node.js
+- Express.js
 
----
+## Database
 
-# 🏗️ Technology Stack
+- Cloud Firestore
 
-### Frontend
+## Authentication
 
-* HTML5
-* CSS3
-* JavaScript (ES6 Modules)
+- Firebase Authentication
+- Google OAuth
 
-### Backend Services
+## AI Integration
 
-* Firebase Authentication
-* Firebase Firestore
+- Google Gemini API
 
-### Future Integrations
+## Hosting & Deployment
 
-* Gemini AI
-* Sustainability APIs
-* Carbon Data Services
+- Vercel
+
+## Version Control
+
+- Git
+- GitHub
 
 ---
 
-# 🚀 Project Structure
+# 🏗️ Project Architecture
 
 ```text
 CarbonCompass/
 │
-├── pages/
-│   ├── dashboard
-│   ├── assessment
-│   ├── report
-│   ├── challenges
-│   ├── coach
-│   ├── simulator
-│   └── profile
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   └── logo/
 │
-├── firebase/
-│   ├── auth
-│   ├── firestore
-│   └── config
-│
-├── components/
-│   ├── navbar
-│   ├── toast
-│   └── shared-ui
+├── js/
+│   ├── components/
+│   ├── firebase/
+│   ├── services/
+│   ├── utils/
+│   └── pages/
 │
 ├── styles/
-│   ├── base
-│   ├── components
-│   ├── animations
-│   └── page-specific styles
+│   ├── base.css
+│   ├── components.css
+│   ├── animations.css
+│   └── page-specific stylesheets
 │
-└── assets/
+├── index.html
+├── assessment.html
+├── dashboard.html
+├── report.html
+├── coach.html
+├── simulator.html
+├── challenges.html
+├── profile.html
+│
+├── server.js
+├── package.json
+├── vercel.json
+└── README.md
 ```
 
 ---
 
-# 🌱 Future Roadmap
+# 🔄 User Journey
 
-### Planned Features
-
-* Gemini-powered AI Coach
-* Community Leaderboards
-* Friends & Teams
-* Sustainability Rankings
-* Monthly Carbon Reports
-* PDF Export
-* Seasonal Challenges
-* Sustainability Analytics
-* Mobile App
-* PWA Support
-
----
-
-# 📈 Current Status
-
-### Completed
-
-✅ Assessment System
-
-✅ Carbon Report Generation
-
-✅ Dashboard
-
-✅ Challenges Hub
-
-✅ Achievement System
-
-✅ Streak Tracking
-
-✅ AI Coach
-
-✅ Sage Buddy Companion
-
-✅ Impact Simulator
-
-✅ Sustainability Profile Hub
-
-✅ Firebase Integration
-
-✅ Authentication System
-
-✅ Responsive UI
+```text
+Landing Page
+      │
+      ▼
+Google Authentication
+      │
+      ▼
+Carbon Assessment
+      │
+      ▼
+Planet Health Score
+      │
+      ▼
+Personalized Report
+      │
+      ▼
+Dashboard
+      │
+      ├────────► AI Coach
+      │
+      ├────────► Challenges
+      │
+      ├────────► Simulator
+      │
+      └────────► Profile
+      │
+      ▼
+XP • Levels • Streaks • Badges
+      │
+      ▼
+Long-Term Sustainability Growth
+```
 
 ---
 
-### In Progress
+# 🔐 Authentication & Security
 
-🚧 Final Design System Refinement
+Carbon Compass uses Firebase Authentication to provide secure user management.
 
-🚧 UI Polish Pass
+### Security Features
 
-🚧 Gemini AI Integration
-
-🚧 Production Deployment
-
----
-
-# 👨‍💻 Developer
-
-Developed by **Sarthak Deshpande**
-
-Built as a vision to combine sustainability, gamification, data visualization, and AI-driven coaching into a single platform that helps users create measurable positive environmental impact.
+- Google Sign-In Authentication
+- Protected Routes
+- User-Specific Firestore Data
+- Environment Variable Configuration
+- OAuth Authorized Domains
+- Secure API Integration
 
 ---
 
-# 🌎 Carbon Compass
+# 📱 Responsive Design
 
-**Assess → Track → Challenge → Coach → Simulate → Improve**
+Designed and optimized for:
 
-Every small action creates a larger impact.
+- 💻 Desktop
+- 🖥️ Large Screens
+- 📱 Mobile Devices
+- 📲 Tablets
+
+Responsive layouts ensure a seamless experience across devices.
+
+---
+
+# ⚡ Performance Features
+
+- Modular JavaScript Architecture
+- Optimized Firebase Queries
+- Lightweight Frontend
+- Lazy Data Loading
+- Efficient Particle Rendering
+- Responsive CSS Design System
+
+---
+
+# 🚀 Deployment
+
+Carbon Compass is deployed using **Vercel** and integrated with:
+
+- Firebase Authentication
+- Cloud Firestore
+- Gemini API Services
+
+---
+
+# 🌟 Key Highlights
+
+### Personalized Sustainability
+
+Every user receives:
+
+- Unique Planet Health Score
+- Sustainability Archetype
+- Carbon Category Breakdown
+- Customized Recommendations
+
+---
+
+### AI-Powered Guidance
+
+Sage AI Coach delivers:
+
+- Sustainability Advice
+- Carbon Reduction Strategies
+- Progress-Aware Recommendations
+- Educational Insights
+
+---
+
+### Gamification
+
+Users stay engaged through:
+
+- XP Progression
+- Levels
+- Badges
+- Streaks
+- Weekly Challenges
+
+---
+
+### Real Impact Awareness
+
+The simulator helps users understand:
+
+- Environmental Tradeoffs
+- Carbon Consequences
+- Sustainable Alternatives
+- Long-Term Impact
+
+---
+
+# 🔮 Future Roadmap
+
+Potential future enhancements include:
+
+- Carbon Footprint History Graphs
+- Sustainability Leaderboards
+- Community Challenges
+- Carbon Offset Integrations
+- Mobile Application
+- Advanced Analytics Dashboard
+- Social Sustainability Features
+- Personalized Sustainability Goals
+
+---
+
+# 🏆 Hackathon Project
+
+Carbon Compass was built as a complete sustainability-focused digital platform combining:
+
+- Environmental Awareness
+- Artificial Intelligence
+- Gamification
+- Behavioral Design
+- Data Visualization
+- Modern Web Engineering
+
+The project aims to make sustainable living more understandable, actionable, and rewarding.
+
+---
+
+# 👨‍💻 Author
+
+### Sarthak Deshpande
+
+Engineering Student • Builder • Sustainability Enthusiast
+
+Focused on creating technology that delivers meaningful real-world impact through intelligent systems and user-centered design.
+
+---
+
+# 🌍 Mission
+
+> "Small sustainable actions, repeated consistently, create meaningful environmental change."
+
+Carbon Compass exists to make sustainability measurable, actionable, and engaging for everyone.
+
+---
+
+<div align="center">
+
+### 🌱 Built for a Better Planet
+
+If you found this project interesting, consider giving it a ⭐ on GitHub.
+
+**Carbon Compass — Navigate Towards a Greener Future.**
+
+</div>
